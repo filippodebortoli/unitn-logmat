@@ -1,0 +1,131 @@
+\documentclass[fontsize = 11 pt, paper=A4, oneside, index=totoc, hyperref]{book}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[osf]{mathpazo}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definizione}[]
+
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prp}{Proposizione}[section]
+\newtheorem{exe}{Esercizio}[section]
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\order}{\vartriangleleft}
+
+\begin{document}
+
+\section{Principio di induzione su \(\mathbb{N}\).}
+
+Consideriamo la tripla \(\left(\N, <, s \right)\) dove \(<\) è la relazione d'ordine "usuale" (o naturale) e \(s \colon \N \to \N\) è la funzione \emph{successore} che associa ad \(n\) il valore \(n+1\). In particolare, \(<\) è una relazione binaria, visibile in termini insiemistici come un sottoinsieme di \(\N \times \N\): ad esempio, \((2,3) \in <\) ma \((2,1) \notin <\).
+
+\paragraph{Proprietà di \(<\) su \(\N\).} La relazione d'ordine naturale sui numeri naturali:
+\begin{enumerate}
+  \item è \emph{antiriflessiva}, per nessun \(n \in \N\) si verifica \(n < n\);
+  \item è \emph{transitiva}, per ogni \(n, m, k \in \N\) se \(m < n\) e \(n < k\), allora \(m < k\);
+  \item è \emph{totale} (o \emph{lineare}), per ogni \(m,n \in \N\) una e una sola delle condizioni \(m < n\), \(m = n\), \(m > n\) è verificata;
+  \item \emph{ammette minimo} - ossia vale il \emph{principio del buon ordinamento} secondo cui ogni sottoinsieme non vuoto di \(\N\) ha elemento minimo.
+\end{enumerate}
+
+\begin{dfn}[Relazioni d'ordine] Sia \(A\) un insieme su cui è definita una relazione binaria \(\order\). Diremo che \(\order\) è un \emph{ordine parziale} se essa è antiriflessiva e transitiva. Se \(\order\) è un ordine parziale e per ogni \(a,b \in A\) vale esattamente una tra \(a \order b\), \(a = b\), \(b \order a\) allora l'ordine si dice essere \emph{totale}. Se ogni sottoinsieme non vuoto di \(A\) ammette un minimo secondo \(\order\), allora la relazione si dice essere un \emph{buon ordine} su \(A\).
+\end{dfn}
+
+\begin{prp} La relazione binaria \(\le\) definita su \(\N\) è:
+  \begin{enumerate}
+    \item \emph{riflessiva};
+    \item \emph{antisimmetrica}, per ogni \(a, b \in \N\), se \(a \le b\) e \(b \le a\) allora \(a = b\);
+    \item \emph{transitiva}.
+  \end{enumerate}
+\end{prp}
+
+Notare che \(\le\, =\, < \cup \left\lbrace (n,n) \colon n \in \N \right\rbrace\).
+
+\begin{exe}
+  Si provino i seguenti fatti:
+  \begin{enumerate}
+    \item Sia \((A, <)\) un insieme parzialmente ordinato. Allora, \(\order := <\,\cup \left\lbrace (a,a) \colon a \in A \right\rbrace\) è una relazione binaria su \(A\) che è riflessiva, antisimmetrica e transitiva;
+    \item Sia \(\order\) una relazione riflessiva, antisimmetrica e transitiva su un insieme \(A\). Allora, la relazione \(\blacktriangleleft\, =\, \order \setminus \left\lbrace (a,a) \colon a \in A \right\rbrace\) è un ordine parziale su \(A\).
+  \end{enumerate}
+\end{exe}
+\begin{proof}[Punto 1]
+  Essendo \(A\) parzialmente ordinato, si ha già a disposizione una relazione antiriflessiva e transitiva. Estendendo la relazione fino ad includere la diagonale di \(A\), si ha che per ogni \(a \in A\) una tra \(a < a\) o \(a = a\) è verificata, dunque \(\order\) è riflessiva. Considerando poi \(a, b \in A\), imponendo \(a \order b \land b \order a\), si ottiene
+  \[
+  (a < b \lor a = b) \land (b < a \lor b = a) \implies (a = b) \lor (a < b \land b < a)
+  \]
+  essendo l'affermazione nell'ultima parentesi una contraddizione, si giunge a
+  \[
+  a \order b \land b \order a \implies a = b;
+  \]
+  l'implicazione opposta è data dal fatto che se \(a = b\) allora la coppia \((a,b)\) appartiene alla diagonale di \(A\) e dunque a \(\order\), rendendo tale relazione di fatto antisimmetrica. La transitività è già verificata in cui \((a,b)\) e \((b,c)\) appartengano entrambi o alla diagonale di \(A\) o a \(<\); supponendo senza perdere di generalità che \((a,b)\) appartenga alla diagonale e \((b,c) \in <\), si ottiene \(a = b \land b < c \implies a < c \implies (a,c) \in \order\).
+\end{proof}
+\begin{proof}[Punto 2]
+Avendo privato la relazione \(\order\) della diagonale di \(A\), non vi sono elementi \(a \in A\) per cui \(a \blacktriangleleft a\) e quindi la relazione definita è antiriflessiva. La transitività di \(\blacktriangleleft\) è mutuata per monotonia da \(\order\). Viene a mancare l'antisimmetria, essendo mancante la diagonale di \(A\) all'interno della nuova relazione. Dunque, \(<\) è un ordine parziale su \(A\).
+\end{proof}
+
+Essendo \(<\) un buon ordine su \(\N\), la struttura \(\left(\N, <, s \colon \begin{matrix}\N & \to & \N \\ n & \mapsto & n+1\end{matrix}\right)\) soddisfa il \emph{principio del minimo} su \(<\); inoltre, soddisfa il principio di induzione \(PI_\N\) secondo cui ogni \(S \subseteq \N\) in cui:
+\begin{enumerate}
+  \item \(0 \in S\);
+  \item ogni volta che \(n \in S\), allora \(s(n) \in S\);
+\end{enumerate}
+è tale che \(S = \N\). {\bf Nota:} il principio di induzione è derivato dal principio del minimo \(PM\).
+\begin{prp}
+  \(PM \implies PI_\N\).
+\end{prp}
+\begin{proof}
+  Assunta la validità di \(PM\), supponiamo che non valga \(PI_\N\) ed esista un insieme \(S \subsetneq \N\) con \(0 \in S\) e tale che \(n \in S \implies s(n) \in S\). Valendo \(PM\), si ha che \(T = \N \setminus S \neq \emptyset\) possiede un elemento minimo \(\bar{n}\). Poichè \(0 \notin T\), \(\bar{n} \neq 0\); inoltre, per \(PM\) su \(\N\), esiste \(\bar{m} \in \N\) tale che \(\bar{n} = s(\bar{m})\).
+  Da \(\bar{m} < \bar{n}\) segue che \(\bar{m} \in S\), e per ipotesi \(\bar{n} = s(\bar{m}) \in S\). Ciò genera un assurdo, poiché si verifica sia \(\bar{n} \in T\) che \(\bar{n} \in S\). Dunque, \(PI_\N\) deve necessariamente valere.
+\end{proof}
+L'argomento utilizzato in quest'ultima dimostrazione viene detto \emph{dimostrazione per assurdo} e consiste nel dimostrare un enunciato supponendone vere le ipotesi e false le tesi. Va usato con cautela, poiché in caso vi siano delle definizioni malposte può generare conclusioni tutt'altro che "vere".
+
+\paragraph{Quale principio è più forte?} Si è visto che il principio del minimo comporta la presenza del principio di induzione sui naturali. Ma è vero il contrario? Vediamo un esempio. Sia \((\N, \order)\) tale che, dati \(m, n \in \N\),
+\[
+m \order n\equiv \exists a,b \in \N. (m = 2a \land n = 2b+1) \lor (m + n = 2a \land m < n)
+\]
+ovvero, la relazione d'ordine che pone \(m\) prima di \(n\) se:
+\begin{enumerate}
+  \item \(m\) è pari e \(n\) è dispari;
+  \item \(m,n\) hanno la stessa parità e \(m < n\).
+\end{enumerate}
+La transitività c'è (scrivila bene), così come l'antiriflessività; avendo pure la totalità, possiamo affermare che \(\order\) è un ordine totale su \(\N\). Possiamo dire che \(\order\) è un buon ordine su \(\N\)?
+Sia \(\emptyset \neq S \subseteq \N\). Se \(S \cap 2\N \neq \emptyset\) allora \(\min_{\order} S = \min(S\cap2\N)\), altrimenti \(\min_{\order} S = \min_{<} S\). (Non sto capendo questo esempio!) 1 non è \(\order\)-minimo e non ha predecessore immediato!
+
+Il nostro {\bf obiettivo} è quello di dare una formulazione del principio di induzione su \(\N\) che non dipenda dalle proprietà particolari dei naturali e che sia utilizzabile anche per insiemi ben ordinati.
+
+\paragraph{Principio di induzione \(PI\).} Ogni \(T \subseteq \N\) con la proprietà che
+\begin{equation}
+\forall n \in \N. \lbrace m \in \N \colon m < n\rbrace \subseteq T \implies n \in T \label{pro1}
+\end{equation}
+è tale che \(T = \N\). Se \(T = \emptyset\) la proprietà non è soddisfatta: infatti, \(\lbrace m \colon m < 0\rbrace \subseteq \emptyset\), eppure \(0 \notin \emptyset\).
+
+\begin{thm}
+  Su \(\N\), \(PM \iff PI_\N \iff PI\).
+\end{thm}
+\begin{proof}
+  Agiamo verificando la validità di \(PM \implies PI_\N \implies PI \implies PM\).
+  \begin{itemize}
+    \item{(\(PM \implies PI_\N\))\quad} Implicazione già dimostrata in una precedente proposizione.
+    \item{(\(PI_\N \implies PI\))\quad}Assumendo che valga \(PI_\N\), si consideri \(T \subseteq \N\) soddisfacente a \eqref{pro1}: poiché \(\lbrace m \in \N \colon m < 0\rbrace \subseteq T\), allora \(0 \in T\); come dimostrare che per \(n\) appartenente a \(T\) anche il suo successore sia incluso nell'insieme? Consideriamo
+    \[
+    S = \lbrace n \in \N \colon \forall m < n, m \in T\rbrace
+    \]
+    e verifichiamo che esso soddisfi le condizioni di \(PI_\N\).
+    \begin{enumerate}
+      \item \(0 \in S\), poiché \(\lbrace m \in \N \colon m < 0\rbrace \subseteq T\) è verificato.
+      \item supponiamo \(n \in S\) e proviamo che \(s(n) \in S\); se \(n \in S\), allora \(\lbrace m \colon m < n\rbrace \subseteq T\) per costruzione di \(S\), in più per \eqref{pro1} si ha \(n \in T\). Ne segue che \(\lbrace m \colon m \le n\rbrace = \lbrace m \colon m < s(n)\rbrace \subseteq T\), in particolare \(s(n) \in S\).
+    \end{enumerate}
+    Essendo verificate le condizioni di \(PI_\N\), si può concludere che \(S = \N\) e di conseguenza \(T = \N\).
+
+    \item{(\(PI \implies PM\))\quad} Assumiamo che \(PM\) non sia valido, mantenendo \(PI\). Siano \(S \subseteq \N\) un insieme privo di elemento minimo e \(T = \N \setminus S\). Preso \(n \in \N\), se \(\lbrace m \in \N \colon m < n\rbrace \subseteq T\) sicuramente \(n \in T\), altrimenti esso risulterebbe essere un elemento minimo per \(S\), che per definizione non ne possiede. Risulta essere \(S = \emptyset\) e si genera un assurdo, poiché \(S\) era supposto verificare \(PI\).
+\end{itemize}
+  \end{proof}
+
+\begin{exe}
+\end{exe}
+\end{document}
