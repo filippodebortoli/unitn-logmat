@@ -1,0 +1,154 @@
+\documentclass[fontsize=11pt,paper=A4,oneside,index=totoc,hyperref]{book}
+
+
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc} % Uses the utf8 input encoding
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+
+%\usepackage{booktabs,array} % Packages for tables
+
+\usepackage{amsmath} % For typesetting math
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[osf]{mathpazo} % Palatino as the main font
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definizione}[]
+
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prp}{Proposizione}[section]
+\newtheorem{exe}{Esercizio}[section]
+
+\newcommand{\Asp}{\mathbb{E}}
+\newcommand{\Ind}{\mathbb{1}}
+
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
+
+% These lines make it so each new lab day directly follows the previous one i.e. does not start on a new page - comment them out to separate lab days on new pages
+\makeatletter
+%\patchcmd{\addchap}{\if@openright\cleardoublepage\else\clearpage\fi}{\par}{}{}
+\makeatother
+
+% Hyperlink configuration
+\usepackage[
+    pdfauthor={Filippo}, % Your name for the author field in the PDF
+    pdftitle={Statistica Matematica}, % PDF title
+    pdfsubject={Statistica}, % PDF subject
+    bookmarksopen=true,
+    linktocpage=true,
+    urlcolor=green, % Color of URLs
+    citecolor=green, % Color of citations
+    linkcolor=green, % Color of links to other pages/figures
+    backref=page,
+    pdfpagelabels=true,
+    plainpages=false,
+    colorlinks=true, % Turn off all coloring by changing this to false
+    bookmarks=true,
+    pdfview=FitB]{hyperref}
+
+\usepackage[stretch=10]{microtype} % Slightly tweak font spacing for aesthetics
+
+\begin{document}
+
+\title{Appunti di Statistica}
+
+\author{
+    Uno a caso \\[1cm]% Your name
+    Corso di Matematica % Your degree
+}
+\date{\today} % No date by default, add \today if you wish to include the publication date
+
+\maketitle % Title page
+
+\tableofcontents % Table of contents
+
+\chapter{appunti}
+
+\section{Richiami.}
+
+\begin{dfn}[Variabile casuale]
+  Dato uno spazio degli eventi \(\Omega\), la funzione \(X \colon \Omega \to \mathbb{R}\) che assegna a ciascun evento \(\omega \in \Omega\) un numero reale \(x = X(\omega)\) è detta \emph{variabile casuale}. Lo \emph{spazio} di \(X\) è l'insieme dei numeri reali \(\lbrace x \colon x = X(\omega), \omega \in \Omega\rbrace\).
+\end{dfn}
+
+Nel caso in cui il supporto sia un insieme numerabile la variabile si dice \emph{discreta}, se invece esso è costituito da un intervallo di numeri reali la variabile si dice \emph{continua}.
+
+\begin{dfn}[Funzione di probabilità]
+  Data una variabile casuale discreta \(X \colon \Omega \to \mathbb{R}\) avente spazio \(A\), la \emph{funzione di massa probabilistica} ({\bf pmf}) di \(X\) è definita come
+  \[
+  p_X(x) = P(X = x),\quad x \in A
+  \]
+  e soddisfa alle seguenti condizioni:
+  \begin{enumerate}
+    \item \(\forall x \in A.\quad 0 \le p_X(x) \le 1\);
+    \item \(\sum_{x\in A}p_X(x) = 1\).
+  \end{enumerate}
+\end{dfn}
+
+\begin{dfn}[Distribuzione di probabilità]
+  Data una variabile casuale \(X\) avente spazio \(A\) funzione di massa probabilistica \(p_X\), è possibile indurre una \emph{distribuzione di probabilità}
+  \begin{equation}
+    P_X(B) = \sum_{b\in B}p_X(b), B \subset A
+  \end{equation}
+  che costituisce una probabilità su \(A\).
+\end{dfn}
+
+\begin{dfn}[Funzione di ripartizione]
+  Data una variabile casuale \(X\), la sua \emph{funzione di distribuzione} (o \emph{funzione di ripartizione}) è una funzione data da
+  \begin{equation}
+    F_X(x) = P_X((-\infty,x]) = P(X \le x)
+  \end{equation}
+  tale da soddisfare alle seguenti condizioni:
+  \begin{enumerate}
+    \item se \(a<b\), allora \(F_X(a) \le F_X(b)\), ovvero è non-decrescente;
+    \item \(\lim_{x\to-\infty}F_X(x) = 0\);
+    \item \(\lim_{x\to\infty}F_X(x) = 1\);
+    \item \(\lim_{x\to x_0^{+}} F_X(x) = F_X(x_0)\), ossia è una funzione continua da destra.
+  \end{enumerate}
+\end{dfn}
+
+\section{Momenti. Funzione generatrice}
+\begin{dfn}[Momento]
+  Data una variabile casuale \(X \sim F(x, {\boldsymbol{\theta}})\) si dice \emph{momento} di ordine \(s\) centrato in \(a\) la funzione
+  \[
+  \mu_s(a) = \Asp((X - a)^s),\quad s \in \mathbb{N}^{*}
+  \]
+\end{dfn}
+Nel caso in cui \(X\) fosse una variabile casuale discreta, allora
+\[
+\Asp((X-a)^s) = \sum_{x}(x-a)^sP_a(X = x).
+\]
+mentre nel caso continuo
+\[
+\Asp((X-a)^s) = \int_{-\infty}^{+\infty}(x-a)^s f(x, {\boldsymbol{\theta}}) \Ind_A(x)\mathrm{d}x
+\]
+
+\paragraph{Momenti particolari.} Ponendo \(a = 0\), si ottiene la classe dei momenti centrati nell'origine di ordine \(s\)
+\[
+\mu_s^\prime = \Asp(X^s)
+\]
+di cui fa parte \(\mu = \Asp(X) = \mu_1^\prime\). Ponendo \(a = \mu\) si possono ottenere alcuni momenti "notevoli":
+\begin{align*}
+  \mu_2 &= \Asp(X - \mu)^2 = \sigma^2 \\
+  \mu_3 &= \Asp(X - \mu)^3 \\
+  \mu_4 &= \Asp(X - \mu)^4
+\end{align*}
+il significato statistico di tali momenti è il seguente: \(\mu_2\) indica la varianza di \(X\), \(\mu_3\) dà una cifra della {\bf simmetria} della distribuzione di \(X\) mentre \(\mu_4\) ne rappresenta la {\bf curtosi}, ovvero la stima del "peso" delle code della distribuzione.
+
+\begin{dfn}[Funzione generatrice dei momenti.]
+  Sia \(X\) una variabile casuale, discreta o assolutamente continua. Se esiste \(t_0 > 0\) tale che
+  \begin{equation}
+    \forall t \in (-t_0,t_0).\quad \Asp(e^{tX}) < \infty
+  \end{equation}
+  diremo la funzione \(M_X(t) = \Asp(e^{tX})\) \emph{funzione generatrice dei momenti} ({\bf fgm}) di \(X\).
+\end{dfn}
+Notare che
+\begin{equation}
+  \restr{\frac{\mathrm{d}^s}{\mathrm{d}t^s}M_X(t)}{t=0} =
+\end{equation}
+\end{document}
