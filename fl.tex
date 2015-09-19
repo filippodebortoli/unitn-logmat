@@ -125,7 +125,21 @@ Il nostro {\bf obiettivo} è quello di dare una formulazione del principio di in
     \item{(\(PI \implies PM\))\quad} Assumiamo che \(PM\) non sia valido, mantenendo \(PI\). Siano \(S \subseteq \N\) un insieme privo di elemento minimo e \(T = \N \setminus S\). Preso \(n \in \N\), se \(\lbrace m \in \N \colon m < n\rbrace \subseteq T\) sicuramente \(n \in T\), altrimenti esso risulterebbe essere un elemento minimo per \(S\), che per definizione non ne possiede. Risulta essere \(S = \emptyset\) e si genera un assurdo, poiché \(S\) era supposto verificare \(PI\).
 \end{itemize}
   \end{proof}
+\section{Esercizi della prima settimana.}
+\begin{exe}
+  Il primo esercizio è stato svolto e riportato direttamente nella dimostrazione completa del teorema di equivalenza.
+\end{exe}
+\begin{exe}
+  L'errore nella dimostrazione di Polya è il seguente: preso un insieme di due cavalli ed effettuata la suddivisione da lui proposta, si ottengono due insieme contenenti ciascuno un cavallo distinto, dunque aventi intersezione nulla! Ciò contrasta con quanto affermato dall'autore e invalida di fatto la dimostrazione.
 
+  Un altro errore, decisamente meno matematico, potrebbe essere l'aver dimenticato che esistono cavalli con manto di più colori.
+\end{exe}
+\begin{exe}
+  Per \(n = 1\), si ha la verifica diretta, poiché \(n^2 = 1\). Assumiamo che la tesi sia stata provata per i primi \(n\) numeri positivi e consideriamo \((n+1)^2\):
+  \begin{equation}
+    (n+1)^2 = n^2 + 2n + 1 = \sum_{i=1}^n (2i - 1) + (2(n + 1) - 1) = \sum_{i = 1}^{n+1}(2i - 1).
+  \end{equation}
+\end{exe}
 \begin{exe}
 \end{exe}
 \end{document}

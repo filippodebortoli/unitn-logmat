@@ -68,7 +68,7 @@
 
 \tableofcontents % Table of contents
 
-\chapter{appunti}
+\chapter{Le prime lezioni.}
 
 \section{Richiami.}
 
@@ -111,6 +111,38 @@ Nel caso in cui il supporto sia un insieme numerabile la variabile si dice \emph
     \item \(\lim_{x\to x_0^{+}} F_X(x) = F_X(x_0)\), ossia è una funzione continua da destra.
   \end{enumerate}
 \end{dfn}
+
+\begin{dfn}[Assoluta continuità]
+  Una variabile casuale continua \(X\) si dice essere \emph{assolutamente continua} se esiste una funzione \(f_X\) tale che
+  \begin{equation}
+    F_X(x) = \int_{-\infty}^x f_X(t) \mathrm{d}t.
+  \end{equation}
+  La funzione \(f_X(t)\) è detta \emph{densità di probabilità} di \(X\); nel caso in cui essa sia continua, \(F_X^\prime(x) = f_X(x)\). Una densità di probabilità \(f_X(x)\) è tale da soddisfare alle seguenti condizioni:
+  \begin{enumerate}
+    \item \(\forall x \in A.\quad f_X(x) > 0\);
+    \item \(\int_{-\infty}^\infty f_X(x) \mathrm{d}x = 1\).
+  \end{enumerate}
+\end{dfn}
+
+\begin{dfn}[Supporto]
+  Si dice \emph{supporto} di una variabile casuale discreta (risp. continua) l'insieme dei punti \(x\) per cui \(p_X(x) > 0\) (risp. \(f_X(x) > 0\)).
+\end{dfn}
+
+\begin{dfn}[Aspettazione]
+  Sia \(X\) una variabile casuale. Se \(X\) è continua con densità di probabilità \(f\) e
+  \[
+  \int_{-\infty}^{\infty}\lvert x\rvert f(x) \mathrm{d}x < \infty
+  \]
+  allora il \emph{valore di aspettazione} di \(X\) è \(\Asp(X) = \int_{-\infty}^{\infty}xf(x)\mathrm{d}x\). Se \(X\) è discreta con funzione di massa probabilistica \(p(x)\) e
+  \[
+  \sum_x \lvert x\rvert p(x) < \infty,
+  \]
+  allora il valore di aspettazione di \(X\) è \(\Asp(X) = \sum_x xp(x)\).
+\end{dfn}
+
+Una delle possibili accezioni di \(\Asp(x)\) è quella di \emph{media} di \(X\): solitamente, quando si vuole intendere tale significato essa viene indicata come \(\mu = \Asp(X)\). Ricordiamo che \(\Asp(X)\) è un operatore lineare e che lascia invariati i valori costanti.
+
+% TO-DO: Definizione di varianza.
 
 \section{Momenti. Funzione generatrice}
 \begin{dfn}[Momento]
