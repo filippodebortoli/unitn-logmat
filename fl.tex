@@ -7,7 +7,7 @@
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{amsmath}
-\usepackage[osf]{mathpazo}
+%\usepackage[osf]{mathpazo}
 
 \theoremstyle{definition}
 \newtheorem{dfn}{Definizione}[]
@@ -19,6 +19,7 @@
 
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\order}{\vartriangleleft}
+\newcommand{\ordine}[1]{\vartriangleleft_{\mathrm{#1}}}
 
 \begin{document}
 
@@ -142,4 +143,47 @@ Il nostro {\bf obiettivo} è quello di dare una formulazione del principio di in
 \end{exe}
 \begin{exe}
 \end{exe}
+
+\section{21 set 2015}
+Consideriamo \((\N, <)\), abbiamo visto tre formulazioni equivalenti del \emph{principio del minimo}: ogni sottoinsieme non vuoto dei naturali ha minimo elemento; il \emph{principio di induzione sui naturali}: ogni sottoinsieme di \(\N\) contenente lo zero ed è chiuso per successore (\(n \in S \implies s(n) \in S)\) coincide con \(\N\); il \emph{principio di induzione} secondo cui ogni sottoinsieme dei naturali \(S \subseteq \N\) per cui
+\begin{equation}
+  \forall n \in \N.\quad \lbrace m \colon m < n\rbrace \subseteq S \implies n \in S
+\end{equation}
+è tale che \(S = \N\). Quest'ultima formulazione prescinde dalla struttura dei naturali ed è interessante perché valida (non equivalente) negli insiemi ben ordinati (spoiler: un enunciato analogo a \(PI\) vale per gli insiemi ben ordinati, addirittura anche in caso di ordine non totale - ipotesi decisamente indebolite). Oggi si lavora sugli insiemi ben ordinati!
+\begin{dfn}[Insieme ben ordinato]
+  Sia \(A\) un insieme e sia \(\order\) una relazione binaria su \(A\). Si dice che \(\order\) è un \emph{buon ordine} su \(A\) se è un ordine totale su \(A\) e se ogni sottoinsieme non vuoto di \(A\) ha \(\order\)-minimo elemento.
+\end{dfn}
+I naturali sono un insieme ben ordinato - \((\N, <)\) è un buon ordine, gli interi sono un insieme che non gode di buon ordinamento - \((\mathbb{Z}, <)\) non è un buon ordine. Un altro esempio, visto la scorsa lezione, di buon ordine è quello in cui presi i naturali si pongono i pari prima dei dispari. Guarda caso, su cosa facciamo induzione?
+Cambiando relazione d'ordine su insieme è possibile ottenere un buon ordine! Per esempio, ponendo sugli interi l'ordine per cui tutti i negativi vengono dopo tutti gli interi positivi, si stabilisce un buon ordine su \(\mathbb{Z}\).
+
+Definizione un po' ridondante, perché?
+\begin{exe}
+  Se \((A,\order)\) è un ordine parziale con la proprietà che ogni sottoinsieme non vuoto di \(A\) ha \(\order\)-minimo elemento, è vero che è un ordine totale di \(A\)?
+\end{exe}
+\begin{proof}
+  Sì, se \(a,b \in A\), allora esiste \(\min_\order \lbrace a,b \rbrace\): se esso è uguale ad \(a\), allora \(a \trianglelefteq b\), altrimenti \(b \trianglelefteq a\). Dunque, tutti gli elementi di \(A\) sono confrontabili.
+\end{proof}
+Dunque, nella definizione di buon ordine, l'ordine parziale e l'esistenza del minimo è condizione sufficiente.
+
+Ovviamente, procede alla verifica del buon ordine di un insieme per esaustione dei casi possibili è inefficiente già con insiemi di pochi elementi. Ci serve qualche criterio!
+
+Come descrivere un insieme in cui si hanno i naturali e in seguito una copia dei naturali?
+|                            |
+---------------------------- -----------------------------
+            N                            N
+
+Soluzione: posso prendere \((\N \times \lbrace 0 \rbrace) \cup (\N \times \lbrace 1 \rbrace)\) e definire la relazione "antilessicografica" \(<<\):
+\[
+(a,h) << (b,k) \iff (h < k) \lor (h = k \land a < b)
+\]
+
+{\bf esercizio:} dimostrare che l'insieme appena visto con l'ordine appena visto è un buon ordine. Definire l'ordine lessicografico (da sx a dx), dato un insieme qualunque e totalmente ordinato \((A, <)\) con \(n \in \N\), su \(A^n\). Provare che l'ordine ottenuto è un ordine totale su \(A^n\). Suggerimento, prendi la minima componente su cui due parole differiscono.
+
+{\bf domanda:} sia \((A, \order)\) un insieme ben ordinato e sia \(n \in \N\). Sia \(\order_{lex}\) l'ordine lessicografico su \(A^n\). Si può dire che \((A^n, \ordine{lex})\) è un buon ordine?
+
+Sia \(B \subset A^n\) non vuoto. Verifichiamo se \(B\) ha \(\order_{lex}\)-minimo elemento. Isolo gli elementi di \(B\) aventi prima componente minima, tra queste quelle aventi seconda componente minima e via così, trovando il minimo! Sia \(b_1\) la componente minima che occorre in qualche \(n\)-upla in \(B\). Tra le \(n\)-uple in \(B\) che hanno prima componente \(b_1\) isoliamo quelle avente seconda componente minima.
+
+Beh, verificare su \(\N^n\).
+
+{\bf domanda:} consideriamo l'insieme delle successioni di naturali con'ordine lessicografico, ossia \(({}^\N\N, <_{lex})\); è un ordine totale? è un buon ordine? suggerimento: verificare che la relazione d'ordine sia antiriflessiva e transitiva, poi usare il trucchetto dell'esercizio precedente.
 \end{document}
