@@ -1,13 +1,13 @@
 \documentclass[fontsize = 11 pt, paper=A4, oneside, index=totoc, hyperref]{book}
 
-\usepackage[T1]{fontenc}
+%\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
 
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{amsmath}
-\usepackage[osf]{mathpazo}
+%\usepackage[osf]{mathpazo}
 
 \theoremstyle{definition}
 \newtheorem{dfn}{Definizione}[]
@@ -19,6 +19,7 @@
 
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\order}{\vartriangleleft}
+\newcommand{\ordine}[1]{\vartriangleleft_{\mathrm{#1}}}
 
 \begin{document}
 
@@ -142,4 +143,86 @@ Il nostro {\bf obiettivo} è quello di dare una formulazione del principio di in
 \end{exe}
 \begin{exe}
 \end{exe}
+
+\section{21 set 2015}
+
+Consideriamo \((\N, <)\), abbiamo visto tre formulazioni equivalenti del \emph{principio del minimo}: ogni sottoinsieme non vuoto dei naturali ha minimo elemento; il \emph{principio di induzione sui naturali}: ogni sottoinsieme di \(\N\) contenente lo zero ed è chiuso per successore (\(n \in S \implies s(n) \in S)\) coincide con \(\N\); il \emph{principio di induzione} secondo cui ogni sottoinsieme dei naturali \(S \subseteq \N\) per cui
+\begin{equation}
+  \forall n \in \N.\quad \lbrace m \colon m < n\rbrace \subseteq S \implies n \in S
+\end{equation}
+è tale che \(S = \N\). Quest'ultima formulazione prescinde dalla struttura dei naturali ed è interessante perché valida (non equivalente) negli insiemi ben ordinati (spoiler: un enunciato analogo a \(PI\) vale per gli insiemi ben ordinati, addirittura anche in caso di ordine non totale - ipotesi decisamente indebolite). Oggi si lavora sugli insiemi ben ordinati!
+
+\begin{dfn}[Buon ordine]
+  Sia \(A\) un insieme e sia \(\ordine{}\) una relazione binaria su \(A\). Si dice che \(\ordine{}\) è un \emph{buon ordine} su \(A\) se esso è un ordine totale su \(A\) e se ogni sottoinsieme non vuoto di \(A\) ha \(\ordine{}\)-minimo elemento.
+\end{dfn}
+
+\paragraph{Esempi di buoni ordini.} L'insieme dei numeri naturali dotato della relazione d'ordine naturale \((\N, <)\) costituisce un buon ordine, così come l'insieme dei naturali ordinato in modo tale che i numeri parti vengano prima di quelli dispari. Per fornire un controesempio, basti pensare all'insieme dei numeri interi dotato della relazione d'ordine naturale \((\mathbb{Z}, <)\), in cui viene non si ha la presenza di un elemento minimo per ogni sottoinsieme - un caso è quello di \(\mathbb{Z}^- = \lbrace z \in \mathbb{Z} \colon z < 0 \rbrace \subset \mathbb{Z}\). Tuttavia, è possibile stabilire un buon ordine su \(\mathbb{Z}\) definendo un ordine in cui tutti gli interi negativi succedono agli interi positivi:
+\[
+0 \ordine{} 1 \ordine{} 2 \ordine{} \dots \ordine{} -1 \ordine{} -2 \ordine{} \dots
+\]
+
+\paragraph{Ridondanza nella definizione.} Nella definizione data di buon ordine, vi è una condizione ridondante, che potrebbe essere benissimo omessa. Infatti...
+\begin{prp}
+  Se \((A, \ordine{})\) è un ordine parziale con la proprietà che ogni sottoinsieme non vuoto di \(A\) ha \(\ordine{}\)-minimo elemento, allora \(\ordine{}\) è un ordine totale di \(A\).
+\end{prp}
+\begin{proof}
+  Presi \(a,b \in A\), allora esiste \(\min_\order \lbrace a,b \rbrace\): nel caso in qui questo sia uguale ad \(a\), allora \(a \trianglelefteq b\), altrimenti \(b \trianglelefteq a\). Dunque, tutti gli elementi di \(A\) sono confrontabili e \(\ordine{}\) è totale.
+\end{proof}
+
+{\bf Attenzione}, procedere alla verifica del buon ordinamento di un insieme agendo per esaustione dei casi possibili risulta essere una strategia inefficiente già con insiemi di pochi elementi. Ci serve qualche criterio!
+
+\begin{exe}
+  Descrivere matematicamente l'insieme composto da una copia dei naturali, a cui viene concatenata un'ulteriore copia dei naturali:
+  \[
+  \underbrace{0,1,2,\dots}_{\N},\underbrace{0,1,2,\dots}_{\N}
+  \]
+\end{exe}
+\begin{proof}[Soluzione]
+  Una possibile soluzione consiste nel considerare \((\N \times \lbrace 0 \rbrace) \cup (\N \times \lbrace 1 \rbrace)\) e definire la relazione \emph{antilessicografica} \(\ll\) tale che
+  \begin{equation}
+    (a,h) \ll (b,k) \iff (h < k) \lor (h = k \land a < b).
+  \end{equation}
+\end{proof}
+\begin{exe}
+  Dimostrare che l'insieme \(A\) visto nell'esercizio precedente munito della relazione d'ordine antilessicografica costituisce un buon ordine.
+\end{exe}
+\begin{proof}
+  Dimostriamo anzitutto che l'ordine antilessicografico \(\ordine{a-lex}\) è parziale.
+  \begin{enumerate}
+    \item L'antiriflessività deriva dal fatto che non esiste nessuna coppia \((a,b) \in A\) tale che
+    \[
+    (a,b) \ordine{a-lex} (a, b) \implies (b < b) \lor (b = b \land a < a) \implies b < b \lor a < a
+    \]
+    \item Prese le coppie \((a,a'), (b,b'), (c,c') \in A\), si ha
+    \begin{align*}
+    (a,a') &\ordine{a-lex} (b,b') \land (b,b') \ordine{a-lex} (c,c') \\
+    \implies & ((a' < b') \lor (a' = b' \land a < b)) \land ((b' < c') \lor (b' = c' \land b < c)) \\
+    \implies & ((a' < b' \lor a' = b') \land (a' < b' \lor a < b)) \land\\
+    & \quad\quad\quad \land ((b' < c' \lor b' = c') \land (b' < c' \lor b < c)) \\
+    \implies & (a' \le b' \land b' \le c') \land ((a' < b' \lor a < b) \land (b' < c' \lor b < c)) \\
+    \implies & a' \le c' \land (a < b \lor b < c) \\
+    \implies & a' < c' \lor (a' = c' \land a < c) \implies (a,a') \ordine{a-lex} (c,c').
+    \end{align*}
+  \end{enumerate}
+\end{proof}
+
+\begin{dfn}[Ordine lessicografico]
+  Dati un insieme totalmente ordinato \((A,<)\) e \(n \in \N\), si definisce la relazione di \emph{ordine lessicografico} su \(A^n\) come
+  \begin{multline}
+    (a_1,\dots,a_n) \ordine{lex} (b_1,\dots,b_n) \iff \\ a_1 < b_1 \lor \left( \exists_{1 < i \le n}.\, \forall_{0 < j < i}.\, a_j = b_j \land a_i < b_i\right).
+  \end{multline}
+\end{dfn}
+\begin{prp}
+  Dati un insieme totalmente ordinato \((A, <)\) e \(n \in \N\), \(\ordine{lex}\) è totale su \(A^n\).
+\end{prp}
+(un'altra idea: basarsi sull'ordine totale di A e dimostrare i tre punti di un ordine totale per un insieme.)
+{\bf esercizio:} dimostrare che l'insieme appena visto con l'ordine appena visto è un buon ordine. Definire l'ordine lessicografico (da sx a dx), dato un insieme qualunque e totalmente ordinato \((A, <)\) con \(n \in \N\), su \(A^n\). Provare che l'ordine ottenuto è un ordine totale su \(A^n\). Suggerimento, prendi la minima componente su cui due parole differiscono.
+
+{\bf domanda:} sia \((A, \order)\) un insieme ben ordinato e sia \(n \in \N\). Sia \(\order_{lex}\) l'ordine lessicografico su \(A^n\). Si può dire che \((A^n, \ordine{lex})\) è un buon ordine?
+
+Sia \(B \subset A^n\) non vuoto. Verifichiamo se \(B\) ha \(\order_{lex}\)-minimo elemento. Isolo gli elementi di \(B\) aventi prima componente minima, tra queste quelle aventi seconda componente minima e via così, trovando il minimo! Sia \(b_1\) la componente minima che occorre in qualche \(n\)-upla in \(B\). Tra le \(n\)-uple in \(B\) che hanno prima componente \(b_1\) isoliamo quelle avente seconda componente minima.
+
+Beh, verificare su \(\N^n\).
+
+{\bf domanda:} consideriamo l'insieme delle successioni di naturali con'ordine lessicografico, ossia \(({}^\N\N, <_{lex})\); è un ordine totale? è un buon ordine? suggerimento: verificare che la relazione d'ordine sia antiriflessiva e transitiva, poi usare il trucchetto dell'esercizio precedente.
 \end{document}
