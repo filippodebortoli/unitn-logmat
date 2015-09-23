@@ -21,7 +21,9 @@
 \newtheorem{exe}{Esercizio}[section]
 
 \newcommand{\Asp}{\mathbb{E}}
-\newcommand{\Ind}{\mathbb{1}}
+\newcommand{\Ind}[1]{\mathbb{1}_{#1}}
+
+\DeclareMathOperator{\Var}{Var}
 
 \newcommand\restr[2]{{% we make the whole thing an ordinary symbol
   \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
@@ -157,7 +159,7 @@ Nel caso in cui \(X\) fosse una variabile casuale discreta, allora
 \]
 mentre nel caso continuo
 \[
-\Asp((X-a)^s) = \int_{-\infty}^{+\infty}(x-a)^s f(x, {\boldsymbol{\theta}}) \Ind_A(x)\mathrm{d}x
+\Asp((X-a)^s) = \int_{-\infty}^{+\infty}(x-a)^s f(x, {\boldsymbol{\theta}}) \Ind{A(x)}\mathrm{d}x
 \]
 
 \paragraph{Momenti particolari.} Ponendo \(a = 0\), si ottiene la classe dei momenti centrati nell'origine di ordine \(s\)
@@ -172,6 +174,12 @@ di cui fa parte \(\mu = \Asp(X) = \mu_1^\prime\). Ponendo \(a = \mu\) si possono
 \end{align*}
 il significato statistico di tali momenti è il seguente: \(\mu_2\) indica la varianza di \(X\), \(\mu_3\) dà una cifra della {\bf simmetria} della distribuzione di \(X\) mentre \(\mu_4\) ne rappresenta la {\bf curtosi}, ovvero la stima del "peso" delle code della distribuzione.
 
+Possiamo mettere in relazione i momenti centrati con i momenti non centrati di una variabile casuale nel seguente modo:
+\begin{equation}
+  \mu_s = \Asp((X - \mu_1^\prime)^s) = \Asp((X - \mu)^s) = \sum_{m=0}^s(-1)^m
+\binom{s}{m}{\mu^\prime}^{s - m}\mu^m.
+\end{equation}
+
 \begin{dfn}[Funzione generatrice dei momenti.]
   Sia \(X\) una variabile casuale, discreta o assolutamente continua. Se esiste \(t_0 > 0\) tale che
   \begin{equation}
@@ -179,8 +187,58 @@ il significato statistico di tali momenti è il seguente: \(\mu_2\) indica la va
   \end{equation}
   diremo la funzione \(M_X(t) = \Asp(e^{tX})\) \emph{funzione generatrice dei momenti} ({\bf fgm}) di \(X\).
 \end{dfn}
-Notare che
+
+
+\section{Trasformazioni di variabili casuali.}
+
+\begin{thm}[Trasformazione di variabili continue]
+  Sia \(X\) una variabile casuale continua con densita \(f_X\) e sia \(W = h(X)\), dove \(h\) è una funzione monotona di \(X\). Supponiamo che \(f_X\) sia continua sul supporto di \(X\) e che \(h^{-1}(W)\) abbia derivate continue sul supporto di \(W\). Allora,
+  \begin{equation}
+    \begin{cases}
+      f_W(w) = f_X(h^{-1}(w))\cdot\left\lvert \frac{\mathrm{d}}{\mathrm{d}w}h^{-1}(w)\right\rvert & w \text{ nel supporto di } W \\ 0 & \text{altrove}
+    \end{cases} \label{tra1}
+  \end{equation}
+\end{thm}
+\begin{exe}
+  Sia \(X \sim N(\mu,\sigma^2)\) e sia \(Z = \tfrac{X - \mu}{\sigma}\) la \emph{normalizzazione} di \(X\). Trovare la distribuzione di \(Z\).
+\end{exe}
+\begin{proof}[Soluzione]
+  Si definisca \(h(X) = \tfrac{X - \mu}{\sigma}\): essa è una funzione monotona crescente; inoltre, si noti che \(X = \mu + \sigma Z\). Applicando \eqref{tra1} si ottiene dunque
+  \[
+  f_Z(z) = \frac{1}{\sqrt{2\pi}\sigma}e^{-z^2}\sigma\Ind{\mathbb{R}}(z).
+  \]
+  Notiamo che \(Z\) è distribuita normalmente, similmente a \(X\): i suoi parametri corrispondono a
+  \begin{align*}
+    \Asp(Z) &= \Asp\left(\frac{X-\mu}{\sigma}\right) = \frac{\Asp(X-\mu)}{\sigma} = 0; \\
+    \Var(Z) &= \Var\left(\frac{X-\mu}{\sigma}\right) = \frac{\Var(X-\mu)}{\sigma^2} = \\ &= \frac{\Var(X)}{\sigma^2} = 1.
+  \end{align*}
+  Dunque, \(Z \sim N(0,1)\).
+\end{proof}
+
+\paragraph{Circa la monotonia.} Nel caso \(h(X)\) fosse una funzione non monotona ma \emph{monotona a tratti}, se le altre condizioni del teorema sono soddisfatte vale
 \begin{equation}
-  \restr{\frac{\mathrm{d}^s}{\mathrm{d}t^s}M_X(t)}{t=0} =
+  f_W(w) = \sum_{m=1}^k f_X(h_m^{-1}(w))\cdot\left\lvert\frac{\mathrm{d}}{\mathrm{d}w}h_m^{-1}(w)\right\rvert \Ind{\mathcal{S}_W}(w).
 \end{equation}
+dove \(\mathcal{S}_W\) indica il supporto di \(W\).
+
+\begin{exe}
+  Sia \(Z \sim N(0,1)\) con \(f_Z(z) = \tfrac{1}{\sqrt{2\pi}}e^{-\tfrac{z^2}{2}}\Ind{\mathbb{R}}(z)\) e sia \(W = h(Z) = Z^2\). Trovare la distribuzione di \(W\).
+\end{exe}
+\begin{proof}[Soluzione]
+  La funzione \(h\) è monotona in tre tratti \(A_0 = \lbrace 0 \rbrace\), \(A_1 = (-\infty,0)\) e \(A_2 = (0,\infty)\). Andando a calcolare su ciascuno dei tratti i valori a noi utili,
+  \begin{align*}
+    h_1^{-1}(w) = -\sqrt{w}&; \frac{\mathrm{d}}{\mathrm{d}w}h_1^{-1}(w) = -\frac{1}{2\sqrt{w}} \\
+    h_2^{-1}(w) = \sqrt{w}&; \frac{\mathrm{d}}{\mathrm{d}w}h_2^{-1}(w) = \frac{1}{2\sqrt{w}}.
+  \end{align*}
+  Applicando la formula di trasformazione si ottiene
+  \[
+  f_W(w) = \frac{1}{\sqrt{2\pi}}\frac{1}{\sqrt{w}}e^{-\frac12 w}\Ind{\mathbb{R}^+}(w)
+  \]
+  ossia \(W \sim \mathcal{G}(\alpha = \frac12, \beta = 2) = \chi_1^2\), ossia \(W\) ha distribuzione \emph{chi-quadrato} con grado di libertà \(1\).
+\end{proof}
+\paragraph{Riguardo al chi-quadrato.} Si consideri una famiglia di \(n\) variabili casuali normali standard ed indipendenti e si definisca \(S_n = \sum_{i=1}^n Z_i\). Poiché \(M_{S_n}(t) = (M_{Z_1}(t))^n = \left(\tfrac{1}{\sqrt{1-2t}}\right)^n\), si ha
+\begin{equation}
+  S_n \sim \mathcal{G}(\alpha = \frac{n}{2}, \beta = 2) = \chi_n^2
+\end{equation}
+ossia la somma di variabili casuali normali standard indipendenti ha distribuzione chi-quadrato con \(n\) gradi di libertà.
 \end{document}
