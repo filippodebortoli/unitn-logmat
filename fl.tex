@@ -51,7 +51,7 @@ Notare che \(\le\, =\, < \cup \left\lbrace (n,n) \colon n \in \N \right\rbrace\)
 \begin{exe}
   Si provino i seguenti fatti:
   \begin{enumerate}
-    \item Sia \((A, <)\) un insieme parzialmente ordinato. Allora, \(\order := <\,\cup \left\lbrace (a,a) \colon a \in A \right\rbrace\) è una relazione binaria su \(A\) che è riflessiva, antisimmetrica e transitiva;
+    \item Sia \((A, <)\) un insieme parzialmente ordinato. Allora, \(\order\) definito come  \(<\,\cup \left\lbrace (a,a) \colon a \in A \right\rbrace\) è una relazione binaria su \(A\) che è riflessiva, antisimmetrica e transitiva;
     \item Sia \(\order\) una relazione riflessiva, antisimmetrica e transitiva su un insieme \(A\). Allora, la relazione \(\blacktriangleleft\, =\, \order \setminus \left\lbrace (a,a) \colon a \in A \right\rbrace\) è un ordine parziale su \(A\).
   \end{enumerate}
 \end{exe}
@@ -151,48 +151,103 @@ Questa dimostrazione è per contrapposizione.
 
 <<<<<<< HEAD
 \section{21 set 2015}
+
 Consideriamo \((\N, <)\), abbiamo visto tre formulazioni equivalenti del \emph{principio del minimo}: ogni sottoinsieme non vuoto dei naturali ha minimo elemento; il \emph{principio di induzione sui naturali}: ogni sottoinsieme di \(\N\) contenente lo zero ed è chiuso per successore (\(n \in S \implies s(n) \in S)\) coincide con \(\N\); il \emph{principio di induzione} secondo cui ogni sottoinsieme dei naturali \(S \subseteq \N\) per cui
 \begin{equation}
   \forall n \in \N.\quad \lbrace m \colon m < n\rbrace \subseteq S \implies n \in S
 \end{equation}
 è tale che \(S = \N\). Quest'ultima formulazione prescinde dalla struttura dei naturali ed è interessante perché valida (non equivalente) negli insiemi ben ordinati (spoiler: un enunciato analogo a \(PI\) vale per gli insiemi ben ordinati, addirittura anche in caso di ordine non totale - ipotesi decisamente indebolite). Oggi si lavora sugli insiemi ben ordinati!
-\begin{dfn}[Insieme ben ordinato]
-  Sia \(A\) un insieme e sia \(\order\) una relazione binaria su \(A\). Si dice che \(\order\) è un \emph{buon ordine} su \(A\) se è un ordine totale su \(A\) e se ogni sottoinsieme non vuoto di \(A\) ha \(\order\)-minimo elemento.
+
+\begin{dfn}[Buon ordine]
+  Sia \(A\) un insieme e sia \(\ordine{}\) una relazione binaria su \(A\). Si dice che \(\ordine{}\) è un \emph{buon ordine} su \(A\) se esso è un ordine totale su \(A\) e se ogni sottoinsieme non vuoto di \(A\) ha \(\ordine{}\)-minimo elemento.
 \end{dfn}
-I naturali sono un insieme ben ordinato - \((\N, <)\) è un buon ordine, gli interi sono un insieme che non gode di buon ordinamento - \((\mathbb{Z}, <)\) non è un buon ordine. Un altro esempio, visto la scorsa lezione, di buon ordine è quello in cui presi i naturali si pongono i pari prima dei dispari. Guarda caso, su cosa facciamo induzione?
-Cambiando relazione d'ordine su insieme è possibile ottenere un buon ordine! Per esempio, ponendo sugli interi l'ordine per cui tutti i negativi vengono dopo tutti gli interi positivi, si stabilisce un buon ordine su \(\mathbb{Z}\).
 
-Definizione un po' ridondante, perché?
-\begin{exe}
-  Se \((A,\order)\) è un ordine parziale con la proprietà che ogni sottoinsieme non vuoto di \(A\) ha \(\order\)-minimo elemento, è vero che è un ordine totale di \(A\)?
-\end{exe}
-\begin{proof}
-  Sì, se \(a,b \in A\), allora esiste \(\min_\order \lbrace a,b \rbrace\): se esso è uguale ad \(a\), allora \(a \trianglelefteq b\), altrimenti \(b \trianglelefteq a\). Dunque, tutti gli elementi di \(A\) sono confrontabili.
-\end{proof}
-Dunque, nella definizione di buon ordine, l'ordine parziale e l'esistenza del minimo è condizione sufficiente.
-
-Ovviamente, procede alla verifica del buon ordine di un insieme per esaustione dei casi possibili è inefficiente già con insiemi di pochi elementi. Ci serve qualche criterio!
-
-Come descrivere un insieme in cui si hanno i naturali e in seguito una copia dei naturali?
-|                            |
----------------------------- -----------------------------
-            N                            N
-
-Soluzione: posso prendere \((\N \times \lbrace 0 \rbrace) \cup (\N \times \lbrace 1 \rbrace)\) e definire la relazione "antilessicografica" \(<<\):
+\paragraph{Esempi di buoni ordini.} L'insieme dei numeri naturali dotato della relazione d'ordine naturale \((\N, <)\) costituisce un buon ordine, così come l'insieme dei naturali ordinato in modo tale che i numeri parti vengano prima di quelli dispari. Per fornire un controesempio, basti pensare all'insieme dei numeri interi dotato della relazione d'ordine naturale \((\mathbb{Z}, <)\), in cui viene non si ha la presenza di un elemento minimo per ogni sottoinsieme - un caso è quello di \(\mathbb{Z}^- = \lbrace z \in \mathbb{Z} \colon z < 0 \rbrace \subset \mathbb{Z}\). Tuttavia, è possibile stabilire un buon ordine su \(\mathbb{Z}\) definendo un ordine in cui tutti gli interi negativi succedono agli interi positivi:
 \[
-(a,h) << (b,k) \iff (h < k) \lor (h = k \land a < b)
+0 \ordine{} 1 \ordine{} 2 \ordine{} \dots \ordine{} -1 \ordine{} -2 \ordine{} \dots
 \]
 
-{\bf esercizio:} dimostrare che l'insieme appena visto con l'ordine appena visto è un buon ordine. Definire l'ordine lessicografico (da sx a dx), dato un insieme qualunque e totalmente ordinato \((A, <)\) con \(n \in \N\), su \(A^n\). Provare che l'ordine ottenuto è un ordine totale su \(A^n\). Suggerimento, prendi la minima componente su cui due parole differiscono.
+\paragraph{Ridondanza nella definizione.} Nella definizione data di buon ordine, vi è una condizione ridondante, che potrebbe essere benissimo omessa. Infatti...
+\begin{prp}
+  Se \((A, \ordine{})\) è un ordine parziale con la proprietà che ogni sottoinsieme non vuoto di \(A\) ha \(\ordine{}\)-minimo elemento, allora \(\ordine{}\) è un ordine totale di \(A\).
+\end{prp}
+\begin{proof}
+  Presi \(a,b \in A\), allora esiste \(\min_\order \lbrace a,b \rbrace\): nel caso in qui questo sia uguale ad \(a\), allora \(a \trianglelefteq b\), altrimenti \(b \trianglelefteq a\). Dunque, tutti gli elementi di \(A\) sono confrontabili e \(\ordine{}\) è totale.
+\end{proof}
 
-{\bf domanda:} sia \((A, \order)\) un insieme ben ordinato e sia \(n \in \N\). Sia \(\order_{lex}\) l'ordine lessicografico su \(A^n\). Si può dire che \((A^n, \ordine{lex})\) è un buon ordine?
+{\bf Attenzione}, procedere alla verifica del buon ordinamento di un insieme agendo per esaustione dei casi possibili risulta essere una strategia inefficiente già con insiemi di pochi elementi. Ci serve qualche criterio!
 
-Sia \(B \subset A^n\) non vuoto. Verifichiamo se \(B\) ha \(\order_{lex}\)-minimo elemento. Isolo gli elementi di \(B\) aventi prima componente minima, tra queste quelle aventi seconda componente minima e via così, trovando il minimo! Sia \(b_1\) la componente minima che occorre in qualche \(n\)-upla in \(B\). Tra le \(n\)-uple in \(B\) che hanno prima componente \(b_1\) isoliamo quelle avente seconda componente minima.
+\begin{exe}
+  Descrivere matematicamente l'insieme composto da una copia dei naturali, a cui viene concatenata un'ulteriore copia dei naturali:
+  \[
+  \underbrace{0,1,2,\dots}_{\N},\underbrace{0,1,2,\dots}_{\N}
+  \]
+\end{exe}
+\begin{proof}[Soluzione]
+  Una possibile soluzione consiste nel considerare \((\N \times \lbrace 0 \rbrace) \cup (\N \times \lbrace 1 \rbrace)\) e definire la relazione \emph{antilessicografica} \(\ll\) tale che
+  \begin{equation}
+    (a,h) \ll (b,k) \iff (h < k) \lor (h = k \land a < b).
+  \end{equation}
+\end{proof}
+\begin{exe}
+  Dimostrare che l'insieme \(A\) visto nell'esercizio precedente munito della relazione d'ordine antilessicografica costituisce un buon ordine.
+\end{exe}
+\begin{proof}
+  Dimostriamo anzitutto che l'ordine antilessicografico \(\ordine{a-lex}\) è parziale.
+  \begin{enumerate}
+    \item L'antiriflessività deriva dal fatto che non esiste nessuna coppia \((a,b) \in A\) tale che
+    \[
+    (a,b) \ordine{a-lex} (a, b) \implies (b < b) \lor (b = b \land a < a) \implies b < b \lor a < a
+    \]
+    \item Prese le coppie \((a,a'), (b,b'), (c,c') \in A\), si ha
+    \begin{align*}
+    (a,a') &\ordine{a-lex} (b,b') \land (b,b') \ordine{a-lex} (c,c') \\
+    \implies & ((a' < b') \lor (a' = b' \land a < b)) \land ((b' < c') \lor (b' = c' \land b < c)) \\
+    \implies & ((a' < b' \lor a' = b') \land (a' < b' \lor a < b)) \land\\
+    & \quad\quad\quad \land ((b' < c' \lor b' = c') \land (b' < c' \lor b < c)) \\
+    \implies & (a' \le b' \land b' \le c') \land ((a' < b' \lor a < b) \land (b' < c' \lor b < c)) \\
+    \implies & a' \le c' \land (a < b \lor b < c) \\
+    \implies & a' < c' \lor (a' = c' \land a < c) \implies (a,a') \ordine{a-lex} (c,c').
+    \end{align*}
+  \end{enumerate}
+\end{proof}
 
-Beh, verificare su \(\N^n\).
+\begin{dfn}[Ordine lessicografico]
+  Dati un insieme totalmente ordinato \((A,<)\) e \(n \in \N\), si definisce la relazione di \emph{ordine lessicografico} su \(A^n\) come
+  \begin{multline}
+    (a_1,\dots,a_n) \ordine{lex} (b_1,\dots,b_n) \iff \\ a_1 < b_1 \lor \left( \exists_{1 < i \le n}.\, \forall_{0 < j < i}.\, a_j = b_j \land a_i < b_i\right).
+  \end{multline}
+\end{dfn}
+\begin{prp}
+  Dati un insieme totalmente ordinato \((A, <)\) e \(n \in \N\), \(\ordine{lex}\) è totale su \(A^n\).
+\end{prp}
+\begin{proof}
+  Presi \(a = (a_1,\dots,a_n)\) e \(b = (b_1,\dots,b_n)\) elementi di \(A^n\), l'informazione rilevante ai termini dell'ordine lessicografico risiede nel minimo indice \(0 < i \le n\) per cui \(a_i \neq b_i\); l'ordinamento è legato ad una singola componente, cioè ad un ordinamento di elementi di \(A\). Poiché \(A\) è stato ipotizzato essere totalmente ordinato, ne segue che l'ordine lessicografico definito su \(A^n\) è totale.
+\end{proof}
 
+\paragraph{E il buon ordinamento?} Siano \((A,\order9\) un insieme ben ordinato e \(n \in \N\). Sia \(\ordine{lex}\) l'ordine lessicografico originato a partire da \((A,\order)\) su \(A^n\). Si può dire che \((A^n,\ordine{lex})\) è un buon ordine?
+\begin{proof}[Risposta]
+  Sì. Sia \(B \subset A^n\) un insieme non vuoto. Verifichiamo che \(B\) abbia \(\ordine{lex}\)-minimo elemento, nel seguente modo per \(1 \le i \le n\): si considerino gli elementi la cui componente \(i\)-sima sia minima: ciò è effettuabile per ipotesi di buon ordine di \(\order\), per cui prendendo l'insieme delle componenti \(i\)-sime contenuto in \(A\), esiste il suo \(\order\)-minimo elemento. In seguito, ciò che si sarà ottenuto è un elemento di \(B\) le cui componenti sono minime per \(\order\); chiamato questo elemento \(c\), si avrà che
+  \[
+  \forall b \in B.\quad c \trianglelefteq b,
+  \]
+  da cui l'affermazione che \(c\) è \(\ordine{lex}\)-minimo elemento per \(B\).
+\end{proof}
+\paragraph{Un esempio: \(\N^n\).} Preso il buon ordine \((\N, <)\), si ottiene che l'insieme \(\N^n\) munito dell'ordine lessicografico è a sua volta un buon ordine. L'elemento \(\ordine{lex}\) minimo di \(\N^n\) è costituito dall'\(n\)-upla \((0,\dots,0)\) mentre per ogni sottoinsieme \(B \subset \N^n\) l'elemento \(\ordine{lex}\) minimo è dato, come nella costruzione della domanda precedente, dall'elemento avente componenti \(<\)-minime in \(B\).
+
+\paragraph{Sulle successioni di numeri naturali.} Si consideri l'insieme delle successioni di naturali con ordine lessicografico \(({}^\N\N, <_{\mathrm{lex}})\). Possiamo dire che esso sia un ordine totale? E che sia un buon ordine?
+\begin{proof}[Risposta]
+  La risposta verrà articolata nel seguente modo: prima si mostrerà che \(<_{\mathrm{lex}}\) è un ordine parziale, dopo si proverà l'esistenza di un \(<_{\mathrm{lex}}\)-minimo elemento per ogni sottoinsieme \(B \subseteq {}^\N\N\). Ciò prova che si è in presenza di un buon ordine e conseguentemente di un ordine totale.
+
+  La relazione d'ordine è antiriflessiva, poiché affermare che \(a <_{\mathrm{lex}} a\) con \(a \in {}^\N\N\) condurrebbe a dire che esiste un elemento \(a_i, i \in \N\) della successione \(a\) per cui \(a_i < a_i\), falso poiché la relazione d'ordine naturale è antiriflessiva. Supponendo \(a,b,c \in {}^\N\N\) con \(a <_{\mathrm{lex}} b\) e \(b <_{\mathrm{lex}} c\) significherebbe dire che esistono \(i,i' \in \N\) con \(i < i'\) tali che \(a,b\) differiscano per la prima volta per l'elemento \(i\)-simo della successione, mentre \(b,c\) differiscono per la prima volta in posizione \(i'\)-sima. Poiché \(b,c\) hanno uguale elemento in posizione \(i\)-sima, ne segue che \(a <_{\mathrm{lex}} c\).
+
+<<<<<<< HEAD
+  Per quanto riguarda l'esistenza di un elemento \(<_{\mathrm{lex}}\) minimo per un sottoinsieme \(B \subseteq {}^\N\N\), applicando il ragionamento esposto circa l'insieme prodotto di \(n\) copie di un insieme ben ordinato munito dell'ordine lessicografico ed estendendolo per tutti i numeri naturali, si ottiene il risultato desiderato.
+\end{proof}
+=======
 {\bf domanda:} consideriamo l'insieme delle successioni di naturali con'ordine lessicografico, ossia \(({}^\N\N, <_{lex})\); è un ordine totale? è un buon ordine? suggerimento: verificare che la relazione d'ordine sia antiriflessiva e transitiva, poi usare il trucchetto dell'esercizio precedente.
 =======
 prova
 >>>>>>> 5bea5c627f2f034d98469340d219c54c3a3a92b3
+>>>>>>> origin/master
 \end{document}
