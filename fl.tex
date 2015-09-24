@@ -10,7 +10,7 @@
 %\usepackage[osf]{mathpazo}
 
 \theoremstyle{definition}
-\newtheorem{dfn}{Definizione}[]
+\newtheorem{dfn}{Definizione}[section]
 
 \theoremstyle{plain}
 \newtheorem{thm}{Teorema}[section]
@@ -145,11 +145,10 @@ Il nostro {\bf obiettivo} è quello di dare una formulazione del principio di in
 \end{exe}
 
 \begin{exe}
-Supponiamo che $A \not\subseteq B$ e $B \not\subseteq A$. Allora esistono $a \in A\setminus B$ e $b\in B\setminus A$. L'insieme $\{ a,b\} \in \mathcal{P} (A\cup B)$ perché $a,b\in A\cup B$ ma $\{ a,b\} \not\in \mathcal{P} (A)$ perché $b \not\in A$ e $\{ a,b\} \not\in \mathcal{P} (B)$ perché $a \not\in B$. Quindi $\mathcal{P} (A) \cup \mathcal{P} (B) \not = \mathcal{P} (A\cup B)$. \\ 
+Supponiamo che $A \not\subseteq B$ e $B \not\subseteq A$. Allora esistono $a \in A\setminus B$ e $b\in B\setminus A$. L'insieme $\{ a,b\} \in \mathcal{P} (A\cup B)$ perché $a,b\in A\cup B$ ma $\{ a,b\} \not\in \mathcal{P} (A)$ perché $b \not\in A$ e $\{ a,b\} \not\in \mathcal{P} (B)$ perché $a \not\in B$. Quindi $\mathcal{P} (A) \cup \mathcal{P} (B) \not = \mathcal{P} (A\cup B)$. \\
 Questa dimostrazione è per contrapposizione.
 \end{exe}
 
-<<<<<<< HEAD
 \section{21 set 2015}
 
 Consideriamo \((\N, <)\), abbiamo visto tre formulazioni equivalenti del \emph{principio del minimo}: ogni sottoinsieme non vuoto dei naturali ha minimo elemento; il \emph{principio di induzione sui naturali}: ogni sottoinsieme di \(\N\) contenente lo zero ed è chiuso per successore (\(n \in S \implies s(n) \in S)\) coincide con \(\N\); il \emph{principio di induzione} secondo cui ogni sottoinsieme dei naturali \(S \subseteq \N\) per cui
@@ -241,13 +240,68 @@ Consideriamo \((\N, <)\), abbiamo visto tre formulazioni equivalenti del \emph{p
 
   La relazione d'ordine è antiriflessiva, poiché affermare che \(a <_{\mathrm{lex}} a\) con \(a \in {}^\N\N\) condurrebbe a dire che esiste un elemento \(a_i, i \in \N\) della successione \(a\) per cui \(a_i < a_i\), falso poiché la relazione d'ordine naturale è antiriflessiva. Supponendo \(a,b,c \in {}^\N\N\) con \(a <_{\mathrm{lex}} b\) e \(b <_{\mathrm{lex}} c\) significherebbe dire che esistono \(i,i' \in \N\) con \(i < i'\) tali che \(a,b\) differiscano per la prima volta per l'elemento \(i\)-simo della successione, mentre \(b,c\) differiscono per la prima volta in posizione \(i'\)-sima. Poiché \(b,c\) hanno uguale elemento in posizione \(i\)-sima, ne segue che \(a <_{\mathrm{lex}} c\).
 
-<<<<<<< HEAD
-  Per quanto riguarda l'esistenza di un elemento \(<_{\mathrm{lex}}\) minimo per un sottoinsieme \(B \subseteq {}^\N\N\), applicando il ragionamento esposto circa l'insieme prodotto di \(n\) copie di un insieme ben ordinato munito dell'ordine lessicografico ed estendendolo per tutti i numeri naturali, si ottiene il risultato desiderato.
+  Per quanto riguarda l'esistenza di un elemento \(<_{\mathrm{lex}}\) minimo per un sottoinsieme \(B \subseteq {}^\N\N\), applicando il ragionamento esposto circa l'insieme prodotto di \(n\) copie di un insieme ben ordinato munito dell'ordine lessicografico ed estendendolo per tutti i numeri naturali, si ottiene il risultato desiderato. ({\bf HAI SBAGLIATO}.)
 \end{proof}
-=======
-{\bf domanda:} consideriamo l'insieme delle successioni di naturali con'ordine lessicografico, ossia \(({}^\N\N, <_{lex})\); è un ordine totale? è un buon ordine? suggerimento: verificare che la relazione d'ordine sia antiriflessiva e transitiva, poi usare il trucchetto dell'esercizio precedente.
-=======
-prova
->>>>>>> 5bea5c627f2f034d98469340d219c54c3a3a92b3
->>>>>>> origin/master
+
+\paragraph{Un po' di notazione.} Dati due insiemi \(A,B\) si indica con \({}^AB\) (o \(B^A\)) l'insieme delle funzioni di dominio \(A\) a valori in \(B\). Guarda caso,
+\[
+\lvert {}^AB\rvert = \lvert B \rvert^{\lvert A \rvert}
+\]
+(puoi verificarla, se ti va.) Ad esempio, \({}^\N\N\) avrà cardinalità \(\lvert\N\rvert^{\lvert\N\lvert} = \lvert\mathbb{R}\rvert > \lvert\N\rvert\) (vedremo tutta questa roba).
+
+Siamo interessati a \({}^\N\N\) munito di ordine lessicografico indotto dall'ordine usuale sui naturali. Prese due successioni \(a = (a_n)_{n \in \N}\) e \(b = (b_n)_{n \in \N}\), si definisce \(<_{\mathrm{lex}}\) nel seguente modo: se \(a \neq b\), allora \(\lbrace n \in \N \colon a_n \neq b_n\rbrace \neq \emptyset\), e ciò ci consente di dire, in luogo anche del fatto che esso è un sottoinsieme dei naturali, che esiste un suo minimo. Sia \(\bar{n} = \min \lbrace n \in \N \colon a_n \neq b_n \rbrace\): allora,
+\[
+a <_{\mathrm{lex}} b \iff a_{\bar{n}} < b_{\bar{n}}.
+\]
+Si riesce facilmente a verificare che \(<_{\mathrm{lex}}\) è un ordine totale su \({}^\N\N\). {\bf Domanda:} \(<_{\mathrm{lex}}\) è un buon ordine su \({}^\N\N\)?
+\begin{dfn}
+  Sia \((A, <)\) un insieme parzialmente ordinato (\(<\) è un ordine arbitrario). Una \emph{catena infinita discendente numerabile} è una successione \((a_n)_{n \in \N}\) di elementi di \(A\) tale che, per ogni \(n \in \N\), \(a_{n+1} < a_n\).
+  \[
+  \dotsb < a_{n+1} < a_n < \dotsb < a_2 < a_1 < a_0
+  \]
+\end{dfn}
+\begin{thm}[Criterio di buon ordinamento?]
+  Sia \((A, <)\) un insieme totalmente ordinato. Sono equivalenti:
+  \begin{enumerate}
+    \item \((A,<)\) è un buon ordine;
+    \item non esiste in \(A\) nessuna catena infinita discendente numerabile.
+  \end{enumerate}
+\end{thm}
+\begin{proof}
+  Dimostriamo i due versi dell'equivalenza.
+  \begin{itemize}
+    \item[\(1) \implies 2)\)] Ragioniamo per \emph{contrapposizione}, provando equivalentemente che \(\lnot 2) \implies \lnot 1)\). Assumiamo dunque che esista in \(A\) una catena infinita discendente numerabile \((a_n)_{n \in \N}\) e sia \(B = \lbrace a_n \colon n \in \N \rbrace\). Si ha che \(\emptyset \neq B\) e inoltre \(B\) non ha minimo elemento, poiché: supposto essere \(b = \min B = a_{\bar{n}}\) per qualche \(\bar{n} \in \N\), ma \(a_{\bar{n}+1} < a_{\bar{n}}\), dunque si cadrebbe in un assurdo.
+    \item[\(2) \implies 1)\)] Ragioniamo nuovamente per contrapposizione: assumiamo dunque che \((A,<)\) non sia un buon ordine, dunque esiste un sottoinsieme \(\emptyset \neq B \subseteq A\) tale che \(B\) non abbia elemento \(<\)-minimo. Vogliamo usare \(B\) per definire una catena infinita discendente (numerabile) in \(A\), ottenendo quindi \(\lnot 2)\). Sia \(a_0 \in B\): poiché \(B\) non ha minimo, la collezione \(\lbrace b \in B \colon b < a_0\rbrace\) è non vuota; definisco \(A_1 = \lbrace b \in B \colon b < a_0\rbrace\). Sia \(a_1 \in A_1\). Allora \(a_1 < a_0\): procediamo in questo modo. Formalmente, abbiamo fissato \(a_0 \in B\), supponendo di aver definito \(a_n < a_{n-1} < \dotsb < a_1 < a_0\) elementi di \(B\), scegliamo \(a_{n+1}\) in \(\lbrace b \in B \colon b < a_n\rbrace\) che è non vuoto poiché stiamo lavorando sotto l'ipotesi che \(B\) non abbia elemento minimo. Otteniamo così una catena infinita discendente.
+  \end{itemize}
+\end{proof}
+Alla luce di questo teorema, possiamo dire che \({}^\N\N\) munito dell'ordine lessicografico {\bf non} è un buon ordine. Per esempio,
+\[
+\dotsb <_{\mathrm{lex}} (0,0,0,1,2,\dots,n,\dots) <_{\mathrm{lex}} (0,0,1,2,\dots,n,\dots) <_{\mathrm{lex}} (0,1,2,\dots,n,\dots)
+\]
+è una catena infinita discendente Per \(({}^\N\N,<_{\mathrm{lex}})\).
+
+\paragraph{Let's go back to the Induction Mountain (for a while).} Avevamo formulato il principio di induzione sui naturali in tre maniere equivalenti: il \emph{principio del minimo}, per cui ogni sottoinsieme non vuoto di \(\N\) ha minimo elemento - dunque, \((\N, <)\) è un buon ordine; il \emph{principio di induzione sui naturali}, per cui ogni \(S \subseteq \N\) tale che \(0 \in S\) e \(n \in S \implies s(n) \in S\) è uguale a \(\N\); il \emph{principio di induzione}, per cui ogni \(S \subseteq \N\) con la proprietà che se per \(n \in \N\) vale \(\lbrace m \in \N \colon m < n \rbrace \subseteq S \implies n \in S\) è tale che \(S = \N\).
+
+\paragraph{Possiamo caratterizzare ancora un po' gli ordini totali?} Possiamo dire che per un buon ordine sono equivalenti \(PM\) e \(PI\)? Sì.
+
+Vogliamo formulare un principio di induzione per buoni ordini e provare che tale principio caratterizza i buoni ordini tra gli insiemi totalmente ordinati.
+\begin{thm}
+  Sia \((A,\order)\) un insieme totalmente ordinato. Le seguenti sono equivalenti:
+  \begin{enumerate}
+    \item \((A,\order)\) è un buon ordine;
+    \item Ogni \(S \subseteq A\) con la proprietà che per ogni \(a \in A\) se \(\lbrace b \in A \colon b \order a\rbrace \subseteq S\) allora \(a \in S\) è tale che \(S = A\) (\(*\)).
+  \end{enumerate}
+\end{thm}
+\begin{proof} Dimostriamo i due versi dell'equivalenza.
+  \begin{itemize}
+    \item[\(1) \implies 2)\)] Ragioniamo per via diretta. Sia \(S \subseteq A\) che soddisfa \(*\), vogliamo provare \(S = A\) assumendo che \(S \subsetneq A\) e ricavando una contraddizione. Sia \(\bar{a} = \min (A \setminus S)\), esistente per ipotesi di buon ordinamento. Allora, \(\lbrace b \in A \colon b \order \bar{a} \rbrace \subseteq S\) e, per \(*\) \(\bar{a} \in S\). Allora \(\bar{a} \notin S\) e \(\bar{a} \in S\), si è generato il nostro assurdo e \(S \subsetneq A\) è da rifiutare. Dunque \(S = A\).
+    \item[\(2) \implies 1)\)] Sia \(S \subseteq A\) tale da non avere elemento minimo, e proviamo che esso è un insieme vuoto. Sia \(T = A \setminus S\). Sia \(a \in A\), assumiamo che \(\lbrace b \in A \colon b \order a \rbrace \subseteq T\). Può essere che \(a \notin T\)? No, altrimenti vorrebbe dire che \(a \in S\) e oltretutto \(a = \min S\), ma \(S\) è assunto essere privo di elemento minimo, dunque \(a \in T\). Ciò implica che \(T = A\) per le ipotesi fatte, inoltre \(S = \emptyset\).
+  \end{itemize}
+\end{proof}
+\paragraph{Un po' di terminologia.} Se si vuole provare che \(A \implies B\) e:
+\begin{enumerate}
+  \item si assume \(A\) per provare \(B\) si ottiene una dimostrazione \emph{diretta}.
+  \item si prova invece \(\lnot B \implies \lnot A\), si ha una dimostrazione per \emph{contrapposizione}. Possiamo lecitamente operare in questo modo in quanto i valori di verità del modo diretto e di quello per contrapposizione sono gli stessi. (disegna tabella di verità){\bf N.B.} dimostrazione per assurdo e per contrapposizione non sono la stessa cosa!
+\end{enumerate}
+Se si vuole provare un'asserzione \(A\) e si prova invece che, assumendo la negazione di \(A\), si arriva ad una contraddizione, si ha una dimostrazione \emph{per assurdo} di \(A\).
 \end{document}
