@@ -29,7 +29,7 @@
 
 \section{Relazioni d'ordine e induzione.}
 
-Consideriamo la tripla \(\left(\N, <, s \right)\) dove \(<\) è la relazione d'ordine "usuale" (o naturale) e \(s \colon \N \to \N\) è la funzione \emph{successore} che associa ad \(n\) il valore \(n+1\). In particolare, \(<\) è una relazione binaria, visibile in termini insiemistici come un sottoinsieme di \(\N \times \N\): ad esempio, \((2,3) \in <\) ma \((2,1) \notin <\).
+Consideriamo la tripla \(\left(\N, <, s \right)\) dove \(<\) è la relazione d'ordine \emph{usuale} (o naturale) e \(s \colon \N \to \N\) è la funzione \emph{successore} che associa ad \(n\) il valore \(n+1\). In particolare, \(<\) è una relazione binaria, visibile in termini insiemistici come un sottoinsieme di \(\N \times \N\): ad esempio, \((2,3) \in <\) ma \((2,1) \notin <\).
 
 \paragraph{Proprietà di \(<\) su \(\N\).} La relazione d'ordine naturale sui numeri naturali:
 \begin{enumerate}
@@ -241,7 +241,7 @@ Consideriamo \((\N, <)\), abbiamo visto tre formulazioni equivalenti del \emph{p
 \paragraph{Un esempio: \(\N^n\).} Preso il buon ordine \((\N, <)\), si ottiene che l'insieme \(\N^n\) munito dell'ordine lessicografico è a sua volta un buon ordine. L'elemento \(\ordine{lex}\) minimo di \(\N^n\) è costituito dall'\(n\)-upla \((0,\dots,0)\) mentre per ogni sottoinsieme \(B \subset \N^n\) l'elemento \(\ordine{lex}\) minimo è dato, come nella costruzione della domanda precedente, dall'elemento avente componenti \(<\)-minime in \(B\).
 
 \paragraph{Sulle successioni di numeri naturali.} Si consideri l'insieme delle successioni di naturali con ordine lessicografico \(({}^\N\N, <_{\mathrm{lex}})\). Possiamo dire che esso sia un ordine totale? E che sia un buon ordine?
-\begin{proof}[Risposta]
+\begin{proof}[Risposta, {\bf sbagliata}.]
   La risposta verrà articolata nel seguente modo: prima si mostrerà che \(<_{\mathrm{lex}}\) è un ordine parziale, dopo si proverà l'esistenza di un \(<_{\mathrm{lex}}\)-minimo elemento per ogni sottoinsieme \(B \subseteq {}^\N\N\). Ciò prova che si è in presenza di un buon ordine e conseguentemente di un ordine totale.
 
   La relazione d'ordine è antiriflessiva, poiché affermare che \(a <_{\mathrm{lex}} a\) con \(a \in {}^\N\N\) condurrebbe a dire che esiste un elemento \(a_i, i \in \N\) della successione \(a\) per cui \(a_i < a_i\), falso poiché la relazione d'ordine naturale è antiriflessiva. Supponendo \(a,b,c \in {}^\N\N\) con \(a <_{\mathrm{lex}} b\) e \(b <_{\mathrm{lex}} c\) significherebbe dire che esistono \(i,i' \in \N\) con \(i < i'\) tali che \(a,b\) differiscano per la prima volta per l'elemento \(i\)-simo della successione, mentre \(b,c\) differiscono per la prima volta in posizione \(i'\)-sima. Poiché \(b,c\) hanno uguale elemento in posizione \(i\)-sima, ne segue che \(a <_{\mathrm{lex}} c\).
@@ -266,7 +266,7 @@ Si riesce facilmente a verificare che \(<_{\mathrm{lex}}\) è un ordine totale s
   \dotsb < a_{n+1} < a_n < \dotsb < a_2 < a_1 < a_0
   \]
 \end{dfn}
-\begin{thm}[Criterio di buon ordinamento?]
+\begin{thm}[Caratterizzazione di buoni ordini, 1]
   Sia \((A, <)\) un insieme totalmente ordinato. Sono equivalenti:
   \begin{enumerate}
     \item \((A,<)\) è un buon ordine;
@@ -288,10 +288,9 @@ Alla luce di questo teorema, possiamo dire che \({}^\N\N\) munito dell'ordine le
 
 \paragraph{Let's go back to the Induction Mountain (for a while).} Avevamo formulato il principio di induzione sui naturali in tre maniere equivalenti: il \emph{principio del minimo}, per cui ogni sottoinsieme non vuoto di \(\N\) ha minimo elemento - dunque, \((\N, <)\) è un buon ordine; il \emph{principio di induzione sui naturali}, per cui ogni \(S \subseteq \N\) tale che \(0 \in S\) e \(n \in S \implies s(n) \in S\) è uguale a \(\N\); il \emph{principio di induzione}, per cui ogni \(S \subseteq \N\) con la proprietà che se per \(n \in \N\) vale \(\lbrace m \in \N \colon m < n \rbrace \subseteq S \implies n \in S\) è tale che \(S = \N\).
 
-\paragraph{Possiamo caratterizzare ancora un po' gli ordini totali?} Possiamo dire che per un buon ordine sono equivalenti \(PM\) e \(PI\)? Sì.
+\paragraph{Caratterizzare ancora i buoni ordini?} Possiamo dire che per un buon ordine sono equivalenti \(PM\) e \(PI\)? Sì. Vogliamo formulare un principio di induzione per buoni ordini e provare che tale principio caratterizza i buoni ordini tra gli insiemi totalmente ordinati.
 
-Vogliamo formulare un principio di induzione per buoni ordini e provare che tale principio caratterizza i buoni ordini tra gli insiemi totalmente ordinati.
-\begin{thm}
+\begin{thm}[Caratterizzazione di buoni ordini, 2]
   Sia \((A,\lhd)\) un insieme totalmente ordinato. Le seguenti sono equivalenti:
   \begin{enumerate}
     \item \((A,\lhd)\) è un buon ordine;
@@ -394,15 +393,114 @@ Possibilmente, una qualsiasi dimostrazione può essere ridotta ad una dimostrazi
 
 \paragraph{\emph{Apparentemente} per assurdo.}[p.33 Van Dalen] Una dimostrazione catalogata tra quelle facenti utilizzo di un argomento per assurdo è quella dell'irrazionalità di \(\sqrt{2}\), in cui la proposizione afferma che \(\sqrt{2} \notin \mathbb{Q}\). Nel dimostrare questo fatto, si parte assumendo che \(\sqrt{2} \in \mathbb{Q}\) e si giunge poi alla contraddizione grazie all'unicità essenziale della fattorizzazioni in primi dei numeri naturali; tutto farebbe pensare ad un'applicazione vera e propria della riduzione ad assurdo. Tuttavia, va posta seria attenzione poiché in realtà questa {\bf non} è una dimostrazione per assurdo.
 
-Sia \(\phi \overset{\text{def}}{=} \sqrt{2} \in \mathbb{Q}\). La proposizione da dimostrare è \(\lnot \phi\). Quello che viene fatto nella dimostrazione sopra descritta è provare \(\phi \implies \assurdo \approx \lnot \phi\), mentre nell'operare per assurdo si avrebbe \(\left(\lnot(\lnot \phi) \implies \assurdo\right) \implies \lnot \phi\). Mentre in questo caso le due dimostrazioni parrebbero essere equivalenti, in generale non è garantità la validità di \(\lnot\lnot\phi \iff \phi\)
+Sia \(\phi \overset{\text{def}}{=} \left(\sqrt{2} \in \mathbb{Q}\right)\). La proposizione da dimostrare è \(\lnot \phi\). Quello che viene fatto nella dimostrazione sopra descritta è provare \(\phi \implies \assurdo \approx \lnot \phi\), mentre nell'operare per assurdo si avrebbe \(\left(\lnot(\lnot \phi) \implies \assurdo\right) \implies \lnot \phi\). Mentre in questo caso le due dimostrazioni parrebbero essere equivalenti, in generale non è garantità la validità di \(\lnot\lnot\phi \iff \phi\)
 - per esempio, gli intuizionisti rifiutano questa equivalenza. Se l'enunciato della proposizione fosse stato \(\sqrt{2} \in \mathbb{I}\), ecco che la dimostrazione sarebbe stata effettivamente per assurdo. Questo sottolinea l'importanza della scelta dell'assunto che si pone essere come proprietà primitiva.
 
 \section{28 Settembre 2015}
 
-
-
-
 \begin{exe}
   Spiegare perché la definizione di fattoriale definisce una funzione.
 \end{exe}
+
+\section{Esercizi della seconda settimana.}
+
+\begin{exe}
+  Sia \(A\) un insieme. In quali casi la relazione di inclusione stretta \(\subset\) è un ordine totale sull'insieme \(\mathcal{P}(A)\) delle parti di \(A\)?
+\end{exe}
+\begin{proof}
+  {\bf Idea:} Potrebbe essere nel caso in cui \(A\) sia una \(\sigma\)-algebra?
+\end{proof}
+
+\begin{exe}
+  \label{exe:1}
+  Sia \(\lhd\) la relazione su \(\N\) così definita: \(m \lhd n\) se e solo se (\(m\) e \(n\) sono entrambi pari o entrambi dispari e \(m < n\)) oppure (\(m\) è pari e \(n\) è dispari).
+  \begin{enumerate}
+    \item Discutere se \(\lhd\) è un buon ordine su \(\N\);
+    \item Trovare una proprietà relativa alla relazione d'ordine che non fa riferimento a specifici elementi e che sia vera rispetto a \(<\) ma non rispetto a \(\lhd\).
+  \end{enumerate}
+\end{exe}
+\begin{proof}
+  Una proprietà generica, vera per \(<\) ma non per \(\lhd\) è che
+  \[
+  \forall n \in \N.\quad n < n+1.
+  \]
+  Verifichiamo che \(\lhd\) soddisfi le proprietà di buon ordine. % Avendo già discusso in precedenza una dimostrazione basata sulle condizioni essenziali per essere un buon ordine, sfruttiamo in questa dimostrazione un teorema di equivalenza. Infatti, se si considera la successione
+\end{proof}
+
+\begin{exe}
+  Sia \((A,<)\) un insieme totalmente ordinato e sia \(a \in A\). Un elemento \(b \in A\) è detto \emph{predecessore immediato} di \(a\) se:
+  \begin{enumerate}
+    \item \(b < a\);
+    \item non esiste \(c \in A\) tale che \(b < c < a\).
+  \end{enumerate}
+  Cosa fare?
+  \begin{enumerate}
+    \item Provare che, se \(a\) ha un predecessore immediato, esso è unico;
+    \item Dare la definizione di \emph{successore immediato} di \(a\);
+    \item Provare che, se \(a\) ha un successore immediato, esso è unico.
+  \end{enumerate}
+  Dare un esempio di ciascuno dei seguenti:
+  \begin{enumerate}
+    \item un insieme totalmente ordinato in cui ogni elemento ha sia predecessore che successore immediato;
+    \item un insieme infinito totalmente ordinato in cui nessun elemento ha predecessore o successore immediato.
+  \end{enumerate}
+\end{exe}
+\begin{proof}
+  Siano \(b,b'\) due predecessori immediati di \(a\): allora, \(b < a\) e \(b' < a\), inoltre non esiste \(c \in A\) tale che \(b < c < a\) o \(b' < c < a\). Ciò implica che non valendo nè \(b < b'\) nè \(b' < b\), per totalità di \(<\) su \(A\) vale \(b = b'\), dunque il predecessore immediato è unico.
+
+  Possiamo definire il \emph{successore immediato} di \(a\) il numero \(b \in A\) tale che:
+  \begin{enumerate}
+    \item \(a < b\);
+    \item non esiste \(c \in A\) tale che \(a < c < b\).
+  \end{enumerate}
+  Similmente a quanto fatto per il predecessore immediato, si dimostra che il successore immediato di un elemento è unico.
+
+  Un insieme totalmente ordinato in cui ogni elemento ha sia predecessore che successore immediato è \((\mathbb{Z},<)\). Un insieme infinito totalmente ordinato in cui nessun elemento ha predecessore o successore immediato è \((\mathbb{R},<)\).
+\end{proof}
+
+\begin{exe}
+  Sia \((A,<)\) un ordine parziale e sia \(B \subseteq A\). Un elemento \(b \in B\) è \emph{minimale} in \(B\) se non esiste nessun \(c \in B\) tale che \(c < b\).
+  \begin{enumerate}
+    \item Dare un esempio di insieme parzialmente ordinato che ha almeno due elementi minimali;
+    \item Provare che se \((A,<)\) è un ordine totale e se \(a,b\) sono elementi minimali in \(B \subseteq A\), allora \(a = b = \min(B)\).
+  \end{enumerate}
+\end{exe}
+\begin{proof}
+  Un esempio di insieme parzialmente ordinato avente almeno due elementi minimali è dato da \(\lbrace a_1,\dots,a_n \rbrace\) dotato dell'ordine \(\lhd = \lbrace (a_1,a_i) \colon 2 \le i \le n \rbrace\). Se \(a\) e \(b\) sono minimali in \(B \subseteq A\) totalmente ordinato, poiché nè \(a < b\) nè \(b < a\) possono valere, per tricotomia dell'ordine totale si ha \(a = b\); inoltre, non esistendo elemento \(c \in B\) tale che \(c < a\) o \(c < b\), risulta essere \(a = b = \min(B)\).
+\end{proof}
+
+\begin{exe}
+  Siano \((A,<)\)e \((B,\lhd)\) insiemi parzialmente ordinati. Una funzione \(f \colon A \to B\) è un \emph{isomorfismo d'ordine} se:
+  \begin{enumerate}
+    \item \(f\) è biiettiva;
+    \item per ogni \(x,y \in A\), \(x < y \iff f(x) \lhd f(y)\).
+  \end{enumerate}
+  Si dice che \((A,<) \simeq (B, \lhd)\) ovvero che essi sono isomorfi se esiste un isomorfismo d'ordine \(f \colon A \to B\).
+  \begin{enumerate}
+    \item Sia \(a \in \N\) un insieme e sia \(\N_a = \N \cup \lbrace a \rbrace\). Estendiamo l'ordine standard \(<\) su \(\N\) a \(\N_a\) ponendo \(n < a\) per ogni \(n \in \N\). Stabilire se \((\N_a,<)\) è un insieme ben ordinato e se \((\N,<) \simeq (\N_a,<)\);
+    \item Con riferimento all'esercizio \ref{exe:1}, stabilire se \((\N,<)\simeq(\N,\lhd)\).
+  \end{enumerate}
+\end{exe}
+\begin{proof}
+  La relazione d'ordine definita su \(N_a\) è antiriflessiva e transitiva, lo si verifica facilmente. Vediamo che essa stabilisca un buon ordine: preso un sottoinsieme di \(\N_a\) non contenente \(a\), il buon ordine è indotto dal buon ordinamento su \(\N\); se invece nell'insieme è contenuto \(a\), distinguiamo due casi (anche se non ce ne sarebbe bisogno):
+  \begin{enumerate}
+    \item Se \(B = \lbrace a \rbrace\), non vi è alcun elemento \(b \in B\) tale che \(b < a\), dunque \(a\) è \(<\)-minimo elemento;
+    \item Se \(B\) contiene sia \(a\) che elementi di \(\N\), allora l'elemento \(<\)-minimo esiste ed è \(\min \lbrace n \in B \colon n \in \N \rbrace\).
+  \end{enumerate}
+  Non possiamo dire che \((\N,<)\simeq(\N_a,<)\) poiché non esiste elemento \(\bar{n} \in \N\) tale che per ogni \(n \in \N\), \(n < \bar{n}\). Dunque, i due ordini non sono isomorfi, \((\N,<) \not\simeq(\N_a,<)\).
+  {\bf Idea:} \((\N,<) \not\simeq (\N, \lhd)\).
+\end{proof}
+
+\begin{exe}
+  Dimostrare o refutare (producendo un controesempio) ciascuna delle affermazioni seguenti:
+  \begin{enumerate}
+    \item se \((A,<)\) insieme ben ordinato e \(a \in A\) non è il minimo di \(A\), allora \(a\) ha predecessore immediato;
+    \item se \((A,<)\) è un insieme bene ordinato e \(a \in A\) non è il massimo di \(A\), allora \(a\) ha successore immediato.
+  \end{enumerate}
+\end{exe}
+\begin{proof}
+  La prima affermazione è...vera?! Sia \(\bar{a} = \min A\), esistente per buon ordine dell'insieme. Sia \(B = \lbrace b \in A \colon \bar{a} < b \rbrace = A \setminus \lbrace \bar{a} \rbrace\): per buon ordine, esso conterrà un elemento \(a\) che è \(<\)-minimo. Dunque, si avrà che \(\bar{a} < a\) e che non esiste nessun elemento \(c \in A\) tale che \(\bar{a} < c < a\): possiamo dire che \(\bar{a}\) è predecessore immediato di \(a\). Agendo induttivamente come descritto, si trova che ogni elemento non-minimo di \(A\) ammette predecessore immediato.
+  La seconda affermazione è vera: infatti, preso \(B = A \setminus \lbrace b \in A \colon b < a\rbrace \cup \lbrace a \rbrace\), per buon ordine di \(A\) esso ammette un elemento \(<\)-minimo, che sarà dunque il successore immediato di \(a\).
+\end{proof}
+
 \end{document}
