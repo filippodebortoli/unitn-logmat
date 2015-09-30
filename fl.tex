@@ -155,6 +155,13 @@ Supponiamo che $A \not\subseteq B$ e $B \not\subseteq A$. Allora esistono $a \in
 Questa dimostrazione è per contrapposizione.
 \end{exe}
 
+\begin{exe}
+  Dimostriamo che almeno una fra \(2\cdot10^517 + 23\) e \(2\cdot10^517+24\) non è un quadrato perfetto. Poiché un quadrato perfetto di \(n \in \N\) è tale che
+  \[
+  n^2 = \sum_{i_1}^{n}(2i - 1),
+  \]
+  Se il prossimo fosse quadrato allora il secondo sarebbe pari \(\sum_{i=1}^n(2i-1) + 1\) e non sarebbe quadrato perfetto. Simile ragionamento si applica nel caso in cui il secondo fosse un quadrato perfetto. Dunque, almeno uno dei due non è un quadrato perfetto. Osservando che i due numeri scelti sono consecutivi, possiamo generalizzare la nostra affermazione, asserendo che per ogni \(n \in \N\), almeno uno tra \(n\) e \(n+1\) non è un quadrato perfetto. La dimostrazione prodotta è per casi.
+\end{exe}
 \subsection{Buoni ordini e ordini totali. Catene discendenti infinite.}
 
 Consideriamo \((\N, <)\), abbiamo visto tre formulazioni equivalenti del \emph{principio del minimo}: ogni sottoinsieme non vuoto dei naturali ha minimo elemento; il \emph{principio di induzione sui naturali}: ogni sottoinsieme di \(\N\) contenente lo zero ed è chiuso per successore (\(n \in S \implies s(n) \in S)\) coincide con \(\N\); il \emph{principio di induzione} secondo cui ogni sottoinsieme dei naturali \(S \subseteq \N\) per cui
@@ -321,7 +328,7 @@ Un importante aspetto della definizione di elemento minimale è che, mentre si p
 
 \begin{exe}
 {\bf Domanda}: \((\mathcal{P}(\N), \subset)\) è ben fondato?
-{\bf Ragionaci.}
+{\bf Ragionaci.} Sì, è ben fondato.
 \end{exe}
 
 \begin{thm}[Caratterizzazione di ordini ben fondati]
@@ -409,6 +416,9 @@ Sia \(\phi \overset{\text{def}}{=} \left(\sqrt{2} \in \mathbb{Q}\right)\). La pr
 \end{exe}
 \begin{proof}
   {\bf Idea:} Potrebbe essere nel caso in cui \(A\) sia una \(\sigma\)-algebra?
+  {\bf Risposta:} No, pensa semplicemente che se \(X \in \mathcal{P}(A)\) allora anche il complementare vi appartiene.
+
+  Altra idea: La relazione di inclusione stretta induce un ordine totale sull'insieme delle parti quando \(A\) è un singoletto.
 \end{proof}
 
 \begin{exe}
