@@ -1,0 +1,51 @@
+\section{Sui tipi di dimostrazione.}
+
+Nel voler dimostrare un asserto, è possibile procedere logicamente per vie tra loro differenti, applicando un singolo argomento o scomponendo il problema principale in sottosezioni dimostrate poi con l'applicazione di metodi diversi.
+Se si vuole provare che \(A \implies B\), dove \(A,B\) sono due predicati e:
+\begin{enumerate}
+  \item si assume \(A\) per provare \(B\) si ottiene una dimostrazione \emph{diretta}.
+  \item si prova invece \(\lnot B \implies \lnot A\), si ha una dimostrazione per \emph{contrapposizione}. Questo procedura produce una dimostrazione valida, grazie al fatto che i valori di verità assunti da \(A \implies B\) e \(\lnot B \implies \lnot A\) sono gli stessi, a parità di assunzioni iniziali. Si dice anche che dimostrazioni dirette e per contrapposizione sono "uguali, \emph{a meno del significato}".
+\end{enumerate}
+\begin{center}
+\begin{tabular}{c|c|c||c|c|c}
+  \(A\) & \(B\) & \(A \implies B\) & \(\lnot B\) & \(\lnot A\) & \(\lnot B \implies \lnot A\) \\ \hline
+  T & T & T & F & F & T \\
+  T & F & F & T & F & F \\
+  F & T & T & F & T & T \\
+  F & F & T & T & T & T
+\end{tabular}
+\end{center}
+
+\subsection{Dimostrazioni per casi. Costruttività.}
+
+Una dimostrazione \emph{per casi} si occupa di verificare la validità della tesi esaurendo le possibili condizioni di partenza. Vediamo ad esempio, come dimostrare che:
+
+\begin{thm}
+  Esistono \(a,b\) irrazionali tali che \(a^b \in \mathbb{Q}\).
+\end{thm}
+\begin{proof}
+  Siano \(a' = b' = \sqrt{2}\) e distinguiamo due casi:
+  \begin{enumerate}
+    \item se \((a')^{b'} \in \mathbb{Q}\) allora prendiamo \(a = b = \sqrt{2}\)
+    \item altrimenti, prendiamo \(a = \sqrt{2}^{\sqrt{2}}\) e \(b = \sqrt{2}\), in tal caso si ha
+    \[
+    \left(\sqrt{2}^{\sqrt{2}}\right)^{\sqrt{2}} = \sqrt{2}^2 = 2.
+    \]
+  \end{enumerate}
+\end{proof}
+
+Questa dimostrazione, pur dando informazioni rilevanti circa l'esistenza dei numeri cercati, non fornisce indicazioni utili quali l'entità di tali numeri: infatti, viene detto che una delle coppie \((\sqrt{2},\sqrt{2})\) o \((\sqrt{2}^{\sqrt{2}},\sqrt{2})\) potrebbe essere quella cercata, ma non quale delle due è quella che verifica il teorema. Una dimostrazione di questo tipo viene detta \emph{non costruttiva}. Un risultato complementare è stato sviluppato da Lindemann, il quale ha provato:
+\begin{thm}[Lindemann]
+  Siano \(a,b\) irrazionali con \(a\) algebrico. Allora, \(a^b\) è irrazionale.
+\end{thm}
+Sfruttando questa nuova informazione, si può affermare che la coppia soddisfacente la richiesta del teorema è \(\sqrt{2}^{\sqrt{2}}, \sqrt{2}\). Dunque, combinando quanto da noi dimostrato con quanto dimostrato da Lindemann, si può ottenere una dimostrazione \emph{costruttiva}.
+
+\subsection{Dimostrazioni per assurdo.}
+Se si vuole verificare la validità di un predicato \(A\) e si prova invece che, assumendo la sua negazione \(\lnot A\), si giunge ad una contraddizione, si ottiene un tipo di dimostrazione detto \emph{per assurdo}. Da notare il fatto che dimostrazioni per assurdo e per contraddizione {\bf non} sono la stessa cosa: una assume la negazione della tesi per arrivare a dimostrare la negazione delle ipotesi, mentre una parte dalla negazione della tesi per arrivare a trovare una contraddizione nel ragionamento logico!
+
+Possibilmente, una qualsiasi dimostrazione può essere ridotta ad una dimostrazione per assurdo.
+
+\paragraph{\emph{Apparentemente} per assurdo.}[p.33 Van Dalen] Una dimostrazione catalogata tra quelle facenti utilizzo di un argomento per assurdo è quella dell'irrazionalità di \(\sqrt{2}\), in cui la proposizione afferma che \(\sqrt{2} \notin \mathbb{Q}\). Nel dimostrare questo fatto, si parte assumendo che \(\sqrt{2} \in \mathbb{Q}\) e si giunge poi alla contraddizione grazie all'unicità essenziale della fattorizzazioni in primi dei numeri naturali; tutto farebbe pensare ad un'applicazione vera e propria della riduzione ad assurdo. Tuttavia, va posta seria attenzione poiché in realtà questa {\bf non} è una dimostrazione per assurdo.
+
+Sia \(\phi \overset{\text{def}}{=} \left(\sqrt{2} \in \mathbb{Q}\right)\). La proposizione da dimostrare è \(\lnot \phi\). Quello che viene fatto nella dimostrazione sopra descritta è provare \(\phi \implies \assurdo \approx \lnot \phi\), mentre nell'operare per assurdo si avrebbe \(\left(\lnot(\lnot \phi) \implies \assurdo\right) \implies \lnot \phi\). Mentre in questo caso le due dimostrazioni parrebbero essere equivalenti, in generale non è garantità la validità di \(\lnot\lnot\phi \iff \phi\)
+- per esempio, gli intuizionisti rifiutano questa equivalenza. Se l'enunciato della proposizione fosse stato \(\sqrt{2} \in \mathbb{I}\), ecco che la dimostrazione sarebbe stata effettivamente per assurdo. Questo sottolinea l'importanza della scelta dell'assunto che si pone essere come proprietà primitiva.

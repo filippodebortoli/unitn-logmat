@@ -1,0 +1,26 @@
+\section{Assiomi per la teoria degli insiemi (ZF).}
+Introduciamo gli assiomi per la teoria degli insiemi specificati da Zermelo-Fraenkel. Tra questi troviamo nozioni di uguaglianza, appartenenza, insieme, su cui vengono poi provate varie proprietà o conseguenze. {\bf Beware}, chiunque ti dia una definizione di insieme bleffa. Infatti, abbiamo che l'insieme è una nozione \emph{primitiva}, non definita ma di cui si assume l'esistenza. Similmente, anche l'appartenenza è una nozione primitiva! Anche l'uguaglianza viene assunta come nozione primitiva, nonostante ci siano stati tentativi di definirla (vedi Leibniz). Sono \emph{oggetti} privi di definizione. Si danno \emph{assiomi} per descriverne il comportamento.
+
+Gli assiomi devono essere formulati in un qualche linguaggio formale, per:
+\begin{enumerate}
+  \item evitare ambiguità: per esempio, \virg{Il più piccolo numero naturale non definibile con meno di venti parole della lingua italiana} è tuttavia definito con meno di venti parole ("Paradosso" di Berry)! Oppure, \virg{Io sto mentendo} sarebbe vera se e solo se io stessi dicendo la verità...come risolvere questi tranelli linguistici Wittgensteiniani? Se avessimo una nozione matematica di \emph{definibilità}, queste ambiguità sparirebbero.
+  \item poter formulare in maniera accurata proprietà del tipo: \virg{dall'insieme di ipotesi \(S\) si dimostra che vale l'asserzione \(\alpha\)}. Ci serve una nozione rigorosa di \emph{dimostrabilità} per un insieme di assiomi.
+\end{enumerate}
+\subsection{Assiomi per l'uguaglianza.}
+Detti anche \emph{assiomi logici}.
+\begin{enumerate}
+  \item L'uguaglianza è una relazione di equivalenza, ossia:
+  \begin{enumerate}
+    \item è riflessiva: \(\forall x. x = x\) ({\bf N.B.}: Le variabili corrono su insiemi);
+    \item è simmetrica: \(\forall x. \forall y. x = y \to y = x\);
+    \item è transitiva: \(\forall x. \forall y. \forall z. x = y \land y = z \to x = z\).
+  \end{enumerate}
+  ma manca qualcosa! Cosa caratterizza l'uguaglianza tra le relazioni di equivalenza? Per esempio, \((a,b) \sim (c,d) \iff a^2 + b^2 = c^2 + d^2\) definisce un'equivalenza per tutti i punti su una circonferenza centrata nell'origine, ma due punti equivalenti possono benissimo non essere uguali!
+  \item L'uguaglianza deve soddisfare la proprietà di sostitutività di uguali su uguali. Caso particolare: supponiamo di avere una proprietà \(\varphi(x)\) esprimibile nel nostro linguaggio formale. Allora,
+  \begin{equation}
+    \forall x. \forall y. x=y \land \varphi(x) \implies \varphi(y)
+  \end{equation}
+  Questo principio deve essere esteso anche alle \(n\)-uple di numeri naturali!
+\end{enumerate}
+
+Possiamo osservare un atteggiamento simile in geometria piana, dove punto, retta e piano sono dati come concetti primitivi. Vedi Hilbert con \virg{tavoli, sedie e pinte di birra}.

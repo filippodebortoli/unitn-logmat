@@ -1,0 +1,53 @@
+\documentclass[fontsize = 11 pt, paper=A4, oneside, index=totoc, hyperref]{article}
+
+%\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+
+\usepackage{geometry}
+\geometry{a4paper, top=3cm,bottom=3cm,left=3.5cm,right=3.5cm, heightrounded}
+
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{wasysym} %Simboletti carini, per tutti.
+%\usepackage[osf]{mathpazo}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definizione}[section]
+
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prp}{Proposizione}[section]
+\newtheorem{exe}{Esercizio}[section]
+
+\newcommand{\N}{\mathbb{N}}
+%\newcommand{\lhd}{\vartriangleleft}
+\newcommand{\ordine}[1]{\vartriangleleft_{\mathrm{#1}}}
+\newcommand{\assurdo}{\text{\lightning}}
+\newcommand{\escrov}{\text{\textexclamdown}}
+
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
+
+\newcommand{\virg}[1]{‘‘#1’’}
+
+\DeclareMathOperator{\dom}{dom} %Dominio di funzione.
+
+\begin{document}
+
+\title{Fondamenti di Logica Matematica}
+\author{Me}
+
+\maketitle
+\tableofcontents
+\pagebreak
+\input{logmat/induzione}
+\input{logmat/dimostrazioni}
+\input{logmat/insiemi}
+\input{logmat/esercizi}
+\end{document}

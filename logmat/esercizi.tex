@@ -1,0 +1,136 @@
+\section{Esercizi settimanali.}
+
+\subsection{Esercizi della prima settimana.}
+\begin{exe}
+  Il primo esercizio è stato svolto e riportato direttamente nella dimostrazione completa del teorema di equivalenza.
+\end{exe}
+\begin{exe}
+  L'errore nella dimostrazione di Polya è il seguente: preso un insieme di due cavalli ed effettuata la suddivisione da lui proposta, si ottengono due insieme contenenti ciascuno un cavallo distinto, dunque aventi intersezione nulla! Ciò contrasta con quanto affermato dall'autore e invalida di fatto la dimostrazione.
+
+  Un altro errore, decisamente meno matematico, potrebbe essere l'aver dimenticato che esistono cavalli con manto di più colori.
+\end{exe}
+\begin{exe}
+  Per \(n = 1\), si ha la verifica diretta, poiché \(n^2 = 1\). Assumiamo che la tesi sia stata provata per i primi \(n\) numeri positivi e consideriamo \((n+1)^2\):
+  \begin{equation}
+    (n+1)^2 = n^2 + 2n + 1 = \sum_{i=1}^n (2i - 1) + (2(n + 1) - 1) = \sum_{i = 1}^{n+1}(2i - 1).
+  \end{equation}
+\end{exe}
+\begin{exe}
+\end{exe}
+
+\begin{exe}
+Supponiamo che $A \not\subseteq B$ e $B \not\subseteq A$. Allora esistono $a \in A\setminus B$ e $b\in B\setminus A$. L'insieme $\{ a,b\} \in \mathcal{P} (A\cup B)$ perché $a,b\in A\cup B$ ma $\{ a,b\} \not\in \mathcal{P} (A)$ perché $b \not\in A$ e $\{ a,b\} \not\in \mathcal{P} (B)$ perché $a \not\in B$. Quindi $\mathcal{P} (A) \cup \mathcal{P} (B) \not = \mathcal{P} (A\cup B)$. \\
+Questa dimostrazione è per contrapposizione.
+\end{exe}
+
+\begin{exe}
+  Dimostriamo che almeno una fra \(2\cdot10^517 + 23\) e \(2\cdot10^517+24\) non è un quadrato perfetto. Poiché un quadrato perfetto di \(n \in \N\) è tale che
+  \[
+  n^2 = \sum_{i_1}^{n}(2i - 1),
+  \]
+  Se il prossimo fosse quadrato allora il secondo sarebbe pari \(\sum_{i=1}^n(2i-1) + 1\) e non sarebbe quadrato perfetto. Simile ragionamento si applica nel caso in cui il secondo fosse un quadrato perfetto. Dunque, almeno uno dei due non è un quadrato perfetto. Osservando che i due numeri scelti sono consecutivi, possiamo generalizzare la nostra affermazione, asserendo che per ogni \(n \in \N\), almeno uno tra \(n\) e \(n+1\) non è un quadrato perfetto. La dimostrazione prodotta è per casi.
+\end{exe}
+
+\subsection{Esercizi della seconda settimana.}
+
+\begin{exe}
+  Sia \(A\) un insieme. In quali casi la relazione di inclusione stretta \(\subset\) è un ordine totale sull'insieme \(\mathcal{P}(A)\) delle parti di \(A\)?
+\end{exe}
+\begin{proof}
+  {\bf Idea:} Potrebbe essere nel caso in cui \(A\) sia una \(\sigma\)-algebra?
+  {\bf Risposta:} No, pensa semplicemente che se \(X \in \mathcal{P}(A)\) allora anche il complementare vi appartiene.
+
+  Altra idea: La relazione di inclusione stretta induce un ordine totale sull'insieme delle parti quando \(A\) è un singoletto.
+\end{proof}
+
+\begin{exe}
+  \label{exe:1}
+  Sia \(\lhd\) la relazione su \(\N\) così definita: \(m \lhd n\) se e solo se (\(m\) e \(n\) sono entrambi pari o entrambi dispari e \(m < n\)) oppure (\(m\) è pari e \(n\) è dispari).
+  \begin{enumerate}
+    \item Discutere se \(\lhd\) è un buon ordine su \(\N\);
+    \item Trovare una proprietà relativa alla relazione d'ordine che non fa riferimento a specifici elementi e che sia vera rispetto a \(<\) ma non rispetto a \(\lhd\).
+  \end{enumerate}
+\end{exe}
+\begin{proof}
+  Una proprietà generica, vera per \(<\) ma non per \(\lhd\) è che
+  \[
+  \forall n \in \N.\quad n < n+1.
+  \]
+  Verifichiamo che \(\lhd\) soddisfi le proprietà di buon ordine. % Avendo già discusso in precedenza una dimostrazione basata sulle condizioni essenziali per essere un buon ordine, sfruttiamo in questa dimostrazione un teorema di equivalenza. Infatti, se si considera la successione
+\end{proof}
+
+\begin{exe}
+  Sia \((A,<)\) un insieme totalmente ordinato e sia \(a \in A\). Un elemento \(b \in A\) è detto \emph{predecessore immediato} di \(a\) se:
+  \begin{enumerate}
+    \item \(b < a\);
+    \item non esiste \(c \in A\) tale che \(b < c < a\).
+  \end{enumerate}
+  Cosa fare?
+  \begin{enumerate}
+    \item Provare che, se \(a\) ha un predecessore immediato, esso è unico;
+    \item Dare la definizione di \emph{successore immediato} di \(a\);
+    \item Provare che, se \(a\) ha un successore immediato, esso è unico.
+  \end{enumerate}
+  Dare un esempio di ciascuno dei seguenti:
+  \begin{enumerate}
+    \item un insieme totalmente ordinato in cui ogni elemento ha sia predecessore che successore immediato;
+    \item un insieme infinito totalmente ordinato in cui nessun elemento ha predecessore o successore immediato.
+  \end{enumerate}
+\end{exe}
+\begin{proof}
+  Siano \(b,b'\) due predecessori immediati di \(a\): allora, \(b < a\) e \(b' < a\), inoltre non esiste \(c \in A\) tale che \(b < c < a\) o \(b' < c < a\). Ciò implica che non valendo nè \(b < b'\) nè \(b' < b\), per totalità di \(<\) su \(A\) vale \(b = b'\), dunque il predecessore immediato è unico.
+
+  Possiamo definire il \emph{successore immediato} di \(a\) il numero \(b \in A\) tale che:
+  \begin{enumerate}
+    \item \(a < b\);
+    \item non esiste \(c \in A\) tale che \(a < c < b\).
+  \end{enumerate}
+  Similmente a quanto fatto per il predecessore immediato, si dimostra che il successore immediato di un elemento è unico.
+
+  Un insieme totalmente ordinato in cui ogni elemento ha sia predecessore che successore immediato è \((\mathbb{Z},<)\). Un insieme infinito totalmente ordinato in cui nessun elemento ha predecessore o successore immediato è \((\mathbb{R},<)\).
+\end{proof}
+
+\begin{exe}
+  Sia \((A,<)\) un ordine parziale e sia \(B \subseteq A\). Un elemento \(b \in B\) è \emph{minimale} in \(B\) se non esiste nessun \(c \in B\) tale che \(c < b\).
+  \begin{enumerate}
+    \item Dare un esempio di insieme parzialmente ordinato che ha almeno due elementi minimali;
+    \item Provare che se \((A,<)\) è un ordine totale e se \(a,b\) sono elementi minimali in \(B \subseteq A\), allora \(a = b = \min(B)\).
+  \end{enumerate}
+\end{exe}
+\begin{proof}
+  Un esempio di insieme parzialmente ordinato avente almeno due elementi minimali è dato da \(\lbrace a_1,\dots,a_n \rbrace\) dotato dell'ordine \(\lhd = \lbrace (a_1,a_i) \colon 2 \le i \le n \rbrace\). Se \(a\) e \(b\) sono minimali in \(B \subseteq A\) totalmente ordinato, poiché nè \(a < b\) nè \(b < a\) possono valere, per tricotomia dell'ordine totale si ha \(a = b\); inoltre, non esistendo elemento \(c \in B\) tale che \(c < a\) o \(c < b\), risulta essere \(a = b = \min(B)\).
+\end{proof}
+
+\begin{exe}
+  Siano \((A,<)\)e \((B,\lhd)\) insiemi parzialmente ordinati. Una funzione \(f \colon A \to B\) è un \emph{isomorfismo d'ordine} se:
+  \begin{enumerate}
+    \item \(f\) è biiettiva;
+    \item per ogni \(x,y \in A\), \(x < y \iff f(x) \lhd f(y)\).
+  \end{enumerate}
+  Si dice che \((A,<) \simeq (B, \lhd)\) ovvero che essi sono isomorfi se esiste un isomorfismo d'ordine \(f \colon A \to B\).
+  \begin{enumerate}
+    \item Sia \(a \in \N\) un insieme e sia \(\N_a = \N \cup \lbrace a \rbrace\). Estendiamo l'ordine standard \(<\) su \(\N\) a \(\N_a\) ponendo \(n < a\) per ogni \(n \in \N\). Stabilire se \((\N_a,<)\) è un insieme ben ordinato e se \((\N,<) \simeq (\N_a,<)\);
+    \item Con riferimento all'esercizio \ref{exe:1}, stabilire se \((\N,<)\simeq(\N,\lhd)\).
+  \end{enumerate}
+\end{exe}
+\begin{proof}
+  La relazione d'ordine definita su \(N_a\) è antiriflessiva e transitiva, lo si verifica facilmente. Vediamo che essa stabilisca un buon ordine: preso un sottoinsieme di \(\N_a\) non contenente \(a\), il buon ordine è indotto dal buon ordinamento su \(\N\); se invece nell'insieme è contenuto \(a\), distinguiamo due casi (anche se non ce ne sarebbe bisogno):
+  \begin{enumerate}
+    \item Se \(B = \lbrace a \rbrace\), non vi è alcun elemento \(b \in B\) tale che \(b < a\), dunque \(a\) è \(<\)-minimo elemento;
+    \item Se \(B\) contiene sia \(a\) che elementi di \(\N\), allora l'elemento \(<\)-minimo esiste ed è \(\min \lbrace n \in B \colon n \in \N \rbrace\).
+  \end{enumerate}
+  Non possiamo dire che \((\N,<)\simeq(\N_a,<)\) poiché non esiste elemento \(\bar{n} \in \N\) tale che per ogni \(n \in \N\), \(n < \bar{n}\). Dunque, i due ordini non sono isomorfi, \((\N,<) \not\simeq(\N_a,<)\).
+  {\bf Idea:} \((\N,<) \not\simeq (\N, \lhd)\).
+\end{proof}
+
+\begin{exe}
+  Dimostrare o refutare (producendo un controesempio) ciascuna delle affermazioni seguenti:
+  \begin{enumerate}
+    \item se \((A,<)\) insieme ben ordinato e \(a \in A\) non è il minimo di \(A\), allora \(a\) ha predecessore immediato;
+    \item se \((A,<)\) è un insieme bene ordinato e \(a \in A\) non è il massimo di \(A\), allora \(a\) ha successore immediato.
+  \end{enumerate}
+\end{exe}
+\begin{proof}
+  La prima affermazione è...vera?! Sia \(\bar{a} = \min A\), esistente per buon ordine dell'insieme. Sia \(B = \lbrace b \in A \colon \bar{a} < b \rbrace = A \setminus \lbrace \bar{a} \rbrace\): per buon ordine, esso conterrà un elemento \(a\) che è \(<\)-minimo. Dunque, si avrà che \(\bar{a} < a\) e che non esiste nessun elemento \(c \in A\) tale che \(\bar{a} < c < a\): possiamo dire che \(\bar{a}\) è predecessore immediato di \(a\). Agendo induttivamente come descritto, si trova che ogni elemento non-minimo di \(A\) ammette predecessore immediato.
+  La seconda affermazione è vera: infatti, preso \(B = A \setminus \lbrace b \in A \colon b < a\rbrace \cup \lbrace a \rbrace\), per buon ordine di \(A\) esso ammette un elemento \(<\)-minimo, che sarà dunque il successore immediato di \(a\).
+\end{proof}

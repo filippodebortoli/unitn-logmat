@@ -1,31 +1,6 @@
-\documentclass[fontsize = 11 pt, paper=A4, oneside, index=totoc, hyperref]{article}
+\section{Relazioni d'ordine e induzione.}
 
-%\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[italian]{babel}
-
-\usepackage{amsthm}
-\usepackage{amssymb}
-\usepackage{amsmath}
-%\usepackage[osf]{mathpazo}
-
-\theoremstyle{definition}
-\newtheorem{dfn}{Definizione}[section]
-
-\theoremstyle{plain}
-\newtheorem{thm}{Teorema}[section]
-\newtheorem{prp}{Proposizione}[section]
-\newtheorem{exe}{Esercizio}[section]
-
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\order}{\vartriangleleft}
-\newcommand{\ordine}[1]{\vartriangleleft_{\mathrm{#1}}}
-
-\begin{document}
-
-\section{Principio di induzione su \(\mathbb{N}\).}
-
-Consideriamo la tripla \(\left(\N, <, s \right)\) dove \(<\) è la relazione d'ordine "usuale" (o naturale) e \(s \colon \N \to \N\) è la funzione \emph{successore} che associa ad \(n\) il valore \(n+1\). In particolare, \(<\) è una relazione binaria, visibile in termini insiemistici come un sottoinsieme di \(\N \times \N\): ad esempio, \((2,3) \in <\) ma \((2,1) \notin <\).
+Consideriamo la tripla \(\left(\N, <, s \right)\) dove \(<\) è la relazione d'ordine \emph{usuale} (o naturale) e \(s \colon \N \to \N\) è la funzione \emph{successore} che associa ad \(n\) il valore \(n+1\). In particolare, \(<\) è una relazione binaria, visibile in termini insiemistici come un sottoinsieme di \(\N \times \N\): ad esempio, \((2,3) \in <\) ma \((2,1) \notin <\).
 
 \paragraph{Proprietà di \(<\) su \(\N\).} La relazione d'ordine naturale sui numeri naturali:
 \begin{enumerate}
@@ -35,7 +10,7 @@ Consideriamo la tripla \(\left(\N, <, s \right)\) dove \(<\) è la relazione d'o
   \item \emph{ammette minimo} - ossia vale il \emph{principio del buon ordinamento} secondo cui ogni sottoinsieme non vuoto di \(\N\) ha elemento minimo.
 \end{enumerate}
 
-\begin{dfn}[Relazioni d'ordine] Sia \(A\) un insieme su cui è definita una relazione binaria \(\order\). Diremo che \(\order\) è un \emph{ordine parziale} se essa è antiriflessiva e transitiva. Se \(\order\) è un ordine parziale e per ogni \(a,b \in A\) vale esattamente una tra \(a \order b\), \(a = b\), \(b \order a\) allora l'ordine si dice essere \emph{totale}. Se ogni sottoinsieme non vuoto di \(A\) ammette un minimo secondo \(\order\), allora la relazione si dice essere un \emph{buon ordine} su \(A\).
+\begin{dfn}[Relazioni d'ordine] Sia \(A\) un insieme su cui è definita una relazione binaria \(\lhd\). Diremo che \(\lhd\) è un \emph{ordine parziale} se essa è antiriflessiva e transitiva. Se \(\lhd\) è un ordine parziale e per ogni \(a,b \in A\) vale esattamente una tra \(a \lhd b\), \(a = b\), \(b \lhd a\) allora l'ordine si dice essere \emph{totale}. Se ogni sottoinsieme non vuoto di \(A\) ammette un minimo secondo \(\lhd\), allora la relazione si dice essere un \emph{buon ordine} su \(A\).
 \end{dfn}
 
 \begin{prp} La relazione binaria \(\le\) definita su \(\N\) è:
@@ -51,26 +26,27 @@ Notare che \(\le\, =\, < \cup \left\lbrace (n,n) \colon n \in \N \right\rbrace\)
 \begin{exe}
   Si provino i seguenti fatti:
   \begin{enumerate}
-    \item Sia \((A, <)\) un insieme parzialmente ordinato. Allora, \(\order\) definito come  \(<\,\cup \left\lbrace (a,a) \colon a \in A \right\rbrace\) è una relazione binaria su \(A\) che è riflessiva, antisimmetrica e transitiva;
-    \item Sia \(\order\) una relazione riflessiva, antisimmetrica e transitiva su un insieme \(A\). Allora, la relazione \(\blacktriangleleft\, =\, \order \setminus \left\lbrace (a,a) \colon a \in A \right\rbrace\) è un ordine parziale su \(A\).
+    \item Sia \((A, <)\) un insieme parzialmente ordinato. Allora, \(\lhd\) definito come  \(<\,\cup \left\lbrace (a,a) \colon a \in A \right\rbrace\) è una relazione binaria su \(A\) che è riflessiva, antisimmetrica e transitiva;
+    \item Sia \(\lhd\) una relazione riflessiva, antisimmetrica e transitiva su un insieme \(A\). Allora, la relazione \(\LHD\, =\, \lhd \setminus \left\lbrace (a,a) \colon a \in A \right\rbrace\) è un ordine parziale su \(A\).
   \end{enumerate}
 \end{exe}
 \begin{proof}[Punto 1]
-  Essendo \(A\) parzialmente ordinato, si ha già a disposizione una relazione antiriflessiva e transitiva. Estendendo la relazione fino ad includere la diagonale di \(A\), si ha che per ogni \(a \in A\) una tra \(a < a\) o \(a = a\) è verificata, dunque \(\order\) è riflessiva. Considerando poi \(a, b \in A\), imponendo \(a \order b \land b \order a\), si ottiene
+  Essendo \(A\) parzialmente ordinato, si ha già a disposizione una relazione antiriflessiva e transitiva. Estendendo la relazione fino ad includere la diagonale di \(A\), si ha che per ogni \(a \in A\) una tra \(a < a\) o \(a = a\) è verificata, dunque \(\lhd\) è riflessiva. Considerando poi \(a, b \in A\), imponendo \(a \lhd b \land b \lhd a\), si ottiene
   \[
   (a < b \lor a = b) \land (b < a \lor b = a) \implies (a = b) \lor (a < b \land b < a)
   \]
   essendo l'affermazione nell'ultima parentesi una contraddizione, si giunge a
   \[
-  a \order b \land b \order a \implies a = b;
+  a \lhd b \land b \lhd a \implies a = b;
   \]
-  l'implicazione opposta è data dal fatto che se \(a = b\) allora la coppia \((a,b)\) appartiene alla diagonale di \(A\) e dunque a \(\order\), rendendo tale relazione di fatto antisimmetrica. La transitività è già verificata in cui \((a,b)\) e \((b,c)\) appartengano entrambi o alla diagonale di \(A\) o a \(<\); supponendo senza perdere di generalità che \((a,b)\) appartenga alla diagonale e \((b,c) \in <\), si ottiene \(a = b \land b < c \implies a < c \implies (a,c) \in \order\).
+  l'implicazione opposta è data dal fatto che se \(a = b\) allora la coppia \((a,b)\) appartiene alla diagonale di \(A\) e dunque a \(\lhd\), rendendo tale relazione di fatto antisimmetrica. La transitività è già verificata in cui \((a,b)\) e \((b,c)\) appartengano entrambi o alla diagonale di \(A\) o a \(<\); supponendo senza perdere di generalità che \((a,b)\) appartenga alla diagonale e \((b,c) \in <\), si ottiene \(a = b \land b < c \implies a < c \implies (a,c) \in \lhd\).
 \end{proof}
 \begin{proof}[Punto 2]
-Avendo privato la relazione \(\order\) della diagonale di \(A\), non vi sono elementi \(a \in A\) per cui \(a \blacktriangleleft a\) e quindi la relazione definita è antiriflessiva. La transitività di \(\blacktriangleleft\) è mutuata per monotonia da \(\order\). Viene a mancare l'antisimmetria, essendo mancante la diagonale di \(A\) all'interno della nuova relazione. Dunque, \(<\) è un ordine parziale su \(A\).
+Avendo privato la relazione \(\lhd\) della diagonale di \(A\), non vi sono elementi \(a \in A\) per cui \(a \LHD a\) e quindi la relazione definita è antiriflessiva. La transitività di \(\LHD\) è mutuata per monotonia da \(\lhd\). Viene a mancare l'antisimmetria, essendo mancante la diagonale di \(A\) all'interno della nuova relazione. Dunque, \(<\) è un ordine parziale su \(A\).
 \end{proof}
 
-Essendo \(<\) un buon ordine su \(\N\), la struttura \(\left(\N, <, s \colon \begin{matrix}\N & \to & \N \\ n & \mapsto & n+1\end{matrix}\right)\) soddisfa il \emph{principio del minimo} su \(<\); inoltre, soddisfa il principio di induzione \(PI_\N\) secondo cui ogni \(S \subseteq \N\) in cui:
+\subsection{Principio d'induzione.}
+Essendo \(<\) un buon ordine su \(\N\), la struttura \(\left(\N, <, s \colon \begin{matrix}\N & \to & \N \\ n & \mapsto & n+1\end{matrix}\right)\) soddisfa il \emph{principio del minimo} su \(<\); inoltre, soddisfa il principio di induzione sui numeri naturali \(PI_\N\) secondo cui ogni \(S \subseteq \N\) in cui:
 \begin{enumerate}
   \item \(0 \in S\);
   \item ogni volta che \(n \in S\), allora \(s(n) \in S\);
@@ -85,17 +61,17 @@ Essendo \(<\) un buon ordine su \(\N\), la struttura \(\left(\N, <, s \colon \be
 \end{proof}
 L'argomento utilizzato in quest'ultima dimostrazione viene detto \emph{dimostrazione per assurdo} e consiste nel dimostrare un enunciato supponendone vere le ipotesi e false le tesi. Va usato con cautela, poiché in caso vi siano delle definizioni malposte può generare conclusioni tutt'altro che "vere".
 
-\paragraph{Quale principio è più forte?} Si è visto che il principio del minimo comporta la presenza del principio di induzione sui naturali. Ma è vero il contrario? Vediamo un esempio. Sia \((\N, \order)\) tale che, dati \(m, n \in \N\),
+\paragraph{Quale principio è più forte?} Si è visto che il principio del minimo comporta la presenza del principio di induzione sui naturali. Ma è vero il contrario? Vediamo un esempio. Sia \((\N, \lhd)\) tale che, dati \(m, n \in \N\),
 \[
-m \order n\equiv \exists a,b \in \N. (m = 2a \land n = 2b+1) \lor (m + n = 2a \land m < n)
+m \lhd n\equiv \exists a,b \in \N. (m = 2a \land n = 2b+1) \lor (m + n = 2a \land m < n)
 \]
 ovvero, la relazione d'ordine che pone \(m\) prima di \(n\) se:
 \begin{enumerate}
   \item \(m\) è pari e \(n\) è dispari;
   \item \(m,n\) hanno la stessa parità e \(m < n\).
 \end{enumerate}
-La transitività c'è (scrivila bene), così come l'antiriflessività; avendo pure la totalità, possiamo affermare che \(\order\) è un ordine totale su \(\N\). Possiamo dire che \(\order\) è un buon ordine su \(\N\)?
-Sia \(\emptyset \neq S \subseteq \N\). Se \(S \cap 2\N \neq \emptyset\) allora \(\min_{\order} S = \min(S\cap2\N)\), altrimenti \(\min_{\order} S = \min_{<} S\). (Non sto capendo questo esempio!) 1 non è \(\order\)-minimo e non ha predecessore immediato!
+La transitività c'è (scrivila bene), così come l'antiriflessività; avendo pure la totalità, possiamo affermare che \(\lhd\) è un ordine totale su \(\N\). Possiamo dire che \(\lhd\) è un buon ordine su \(\N\)?
+Sia \(\emptyset \neq S \subseteq \N\). Se \(S \cap 2\N \neq \emptyset\) allora \(\min_{\lhd} S = \min(S\cap2\N)\), altrimenti \(\min_{\lhd} S = \min_{<} S\). (Non sto capendo questo esempio!) 1 non è \(\lhd\)-minimo e non ha predecessore immediato!
 
 Il nostro {\bf obiettivo} è quello di dare una formulazione del principio di induzione su \(\N\) che non dipenda dalle proprietà particolari dei naturali e che sia utilizzabile anche per insiemi ben ordinati.
 
@@ -126,30 +102,8 @@ Il nostro {\bf obiettivo} è quello di dare una formulazione del principio di in
     \item{(\(PI \implies PM\))\quad} Assumiamo che \(PM\) non sia valido, mantenendo \(PI\). Siano \(S \subseteq \N\) un insieme privo di elemento minimo e \(T = \N \setminus S\). Preso \(n \in \N\), se \(\lbrace m \in \N \colon m < n\rbrace \subseteq T\) sicuramente \(n \in T\), altrimenti esso risulterebbe essere un elemento minimo per \(S\), che per definizione non ne possiede. Risulta essere \(S = \emptyset\) e si genera un assurdo, poiché \(S\) era supposto verificare \(PI\).
 \end{itemize}
   \end{proof}
-\section{Esercizi della prima settimana.}
-\begin{exe}
-  Il primo esercizio è stato svolto e riportato direttamente nella dimostrazione completa del teorema di equivalenza.
-\end{exe}
-\begin{exe}
-  L'errore nella dimostrazione di Polya è il seguente: preso un insieme di due cavalli ed effettuata la suddivisione da lui proposta, si ottengono due insieme contenenti ciascuno un cavallo distinto, dunque aventi intersezione nulla! Ciò contrasta con quanto affermato dall'autore e invalida di fatto la dimostrazione.
 
-  Un altro errore, decisamente meno matematico, potrebbe essere l'aver dimenticato che esistono cavalli con manto di più colori.
-\end{exe}
-\begin{exe}
-  Per \(n = 1\), si ha la verifica diretta, poiché \(n^2 = 1\). Assumiamo che la tesi sia stata provata per i primi \(n\) numeri positivi e consideriamo \((n+1)^2\):
-  \begin{equation}
-    (n+1)^2 = n^2 + 2n + 1 = \sum_{i=1}^n (2i - 1) + (2(n + 1) - 1) = \sum_{i = 1}^{n+1}(2i - 1).
-  \end{equation}
-\end{exe}
-\begin{exe}
-\end{exe}
-
-\begin{exe}
-Supponiamo che $A \not\subseteq B$ e $B \not\subseteq A$. Allora esistono $a \in A\setminus B$ e $b\in B\setminus A$. L'insieme $\{ a,b\} \in \mathcal{P} (A\cup B)$ perché $a,b\in A\cup B$ ma $\{ a,b\} \not\in \mathcal{P} (A)$ perché $b \not\in A$ e $\{ a,b\} \not\in \mathcal{P} (B)$ perché $a \not\in B$. Quindi $\mathcal{P} (A) \cup \mathcal{P} (B) \not = \mathcal{P} (A\cup B)$. \\
-Questa dimostrazione è per contrapposizione.
-\end{exe}
-
-\section{21 set 2015}
+\subsection{Buoni ordini e ordini totali. Catene discendenti infinite.}
 
 Consideriamo \((\N, <)\), abbiamo visto tre formulazioni equivalenti del \emph{principio del minimo}: ogni sottoinsieme non vuoto dei naturali ha minimo elemento; il \emph{principio di induzione sui naturali}: ogni sottoinsieme di \(\N\) contenente lo zero ed è chiuso per successore (\(n \in S \implies s(n) \in S)\) coincide con \(\N\); il \emph{principio di induzione} secondo cui ogni sottoinsieme dei naturali \(S \subseteq \N\) per cui
 \begin{equation}
@@ -158,20 +112,20 @@ Consideriamo \((\N, <)\), abbiamo visto tre formulazioni equivalenti del \emph{p
 è tale che \(S = \N\). Quest'ultima formulazione prescinde dalla struttura dei naturali ed è interessante perché valida (non equivalente) negli insiemi ben ordinati (spoiler: un enunciato analogo a \(PI\) vale per gli insiemi ben ordinati, addirittura anche in caso di ordine non totale - ipotesi decisamente indebolite). Oggi si lavora sugli insiemi ben ordinati!
 
 \begin{dfn}[Buon ordine]
-  Sia \(A\) un insieme e sia \(\ordine{}\) una relazione binaria su \(A\). Si dice che \(\ordine{}\) è un \emph{buon ordine} su \(A\) se esso è un ordine totale su \(A\) e se ogni sottoinsieme non vuoto di \(A\) ha \(\ordine{}\)-minimo elemento.
+  Sia \(A\) un insieme e sia \(\lhd\) una relazione binaria su \(A\). Si dice che \(\lhd\) è un \emph{buon ordine} su \(A\) se esso è un ordine totale su \(A\) e se ogni sottoinsieme non vuoto di \(A\) ha \(\lhd\)-minimo elemento.
 \end{dfn}
 
 \paragraph{Esempi di buoni ordini.} L'insieme dei numeri naturali dotato della relazione d'ordine naturale \((\N, <)\) costituisce un buon ordine, così come l'insieme dei naturali ordinato in modo tale che i numeri parti vengano prima di quelli dispari. Per fornire un controesempio, basti pensare all'insieme dei numeri interi dotato della relazione d'ordine naturale \((\mathbb{Z}, <)\), in cui viene non si ha la presenza di un elemento minimo per ogni sottoinsieme - un caso è quello di \(\mathbb{Z}^- = \lbrace z \in \mathbb{Z} \colon z < 0 \rbrace \subset \mathbb{Z}\). Tuttavia, è possibile stabilire un buon ordine su \(\mathbb{Z}\) definendo un ordine in cui tutti gli interi negativi succedono agli interi positivi:
 \[
-0 \ordine{} 1 \ordine{} 2 \ordine{} \dots \ordine{} -1 \ordine{} -2 \ordine{} \dots
+0 \lhd 1 \lhd 2 \lhd \dots \lhd -1 \lhd -2 \lhd \dots
 \]
 
 \paragraph{Ridondanza nella definizione.} Nella definizione data di buon ordine, vi è una condizione ridondante, che potrebbe essere benissimo omessa. Infatti...
 \begin{prp}
-  Se \((A, \ordine{})\) è un ordine parziale con la proprietà che ogni sottoinsieme non vuoto di \(A\) ha \(\ordine{}\)-minimo elemento, allora \(\ordine{}\) è un ordine totale di \(A\).
+  Se \((A, \lhd)\) è un ordine parziale con la proprietà che ogni sottoinsieme non vuoto di \(A\) ha \(\lhd\)-minimo elemento, allora \(\lhd\) è un ordine totale di \(A\).
 \end{prp}
 \begin{proof}
-  Presi \(a,b \in A\), allora esiste \(\min_\order \lbrace a,b \rbrace\): nel caso in qui questo sia uguale ad \(a\), allora \(a \trianglelefteq b\), altrimenti \(b \trianglelefteq a\). Dunque, tutti gli elementi di \(A\) sono confrontabili e \(\ordine{}\) è totale.
+  Presi \(a,b \in A\), allora esiste \(\min_\lhd \lbrace a,b \rbrace\): nel caso in qui questo sia uguale ad \(a\), allora \(a \unlhd b\), altrimenti \(b \unlhd a\). Dunque, tutti gli elementi di \(A\) sono confrontabili e \(\lhd\) è totale.
 \end{proof}
 
 {\bf Attenzione}, procedere alla verifica del buon ordinamento di un insieme agendo per esaustione dei casi possibili risulta essere una strategia inefficiente già con insiemi di pochi elementi. Ci serve qualche criterio!
@@ -224,18 +178,18 @@ Consideriamo \((\N, <)\), abbiamo visto tre formulazioni equivalenti del \emph{p
   Presi \(a = (a_1,\dots,a_n)\) e \(b = (b_1,\dots,b_n)\) elementi di \(A^n\), l'informazione rilevante ai termini dell'ordine lessicografico risiede nel minimo indice \(0 < i \le n\) per cui \(a_i \neq b_i\); l'ordinamento è legato ad una singola componente, cioè ad un ordinamento di elementi di \(A\). Poiché \(A\) è stato ipotizzato essere totalmente ordinato, ne segue che l'ordine lessicografico definito su \(A^n\) è totale.
 \end{proof}
 
-\paragraph{E il buon ordinamento?} Siano \((A,\order9\) un insieme ben ordinato e \(n \in \N\). Sia \(\ordine{lex}\) l'ordine lessicografico originato a partire da \((A,\order)\) su \(A^n\). Si può dire che \((A^n,\ordine{lex})\) è un buon ordine?
+\paragraph{E il buon ordinamento?} Siano \((A,\lhd9\) un insieme ben ordinato e \(n \in \N\). Sia \(\ordine{lex}\) l'ordine lessicografico originato a partire da \((A,\lhd)\) su \(A^n\). Si può dire che \((A^n,\ordine{lex})\) è un buon ordine?
 \begin{proof}[Risposta]
-  Sì. Sia \(B \subset A^n\) un insieme non vuoto. Verifichiamo che \(B\) abbia \(\ordine{lex}\)-minimo elemento, nel seguente modo per \(1 \le i \le n\): si considerino gli elementi la cui componente \(i\)-sima sia minima: ciò è effettuabile per ipotesi di buon ordine di \(\order\), per cui prendendo l'insieme delle componenti \(i\)-sime contenuto in \(A\), esiste il suo \(\order\)-minimo elemento. In seguito, ciò che si sarà ottenuto è un elemento di \(B\) le cui componenti sono minime per \(\order\); chiamato questo elemento \(c\), si avrà che
+  Sì. Sia \(B \subset A^n\) un insieme non vuoto. Verifichiamo che \(B\) abbia \(\ordine{lex}\)-minimo elemento, nel seguente modo per \(1 \le i \le n\): si considerino gli elementi la cui componente \(i\)-sima sia minima: ciò è effettuabile per ipotesi di buon ordine di \(\lhd\), per cui prendendo l'insieme delle componenti \(i\)-sime contenuto in \(A\), esiste il suo \(\lhd\)-minimo elemento. In seguito, ciò che si sarà ottenuto è un elemento di \(B\) le cui componenti sono minime per \(\lhd\); chiamato questo elemento \(c\), si avrà che
   \[
-  \forall b \in B.\quad c \trianglelefteq b,
+  \forall b \in B.\quad c \unlhd b,
   \]
   da cui l'affermazione che \(c\) è \(\ordine{lex}\)-minimo elemento per \(B\).
 \end{proof}
 \paragraph{Un esempio: \(\N^n\).} Preso il buon ordine \((\N, <)\), si ottiene che l'insieme \(\N^n\) munito dell'ordine lessicografico è a sua volta un buon ordine. L'elemento \(\ordine{lex}\) minimo di \(\N^n\) è costituito dall'\(n\)-upla \((0,\dots,0)\) mentre per ogni sottoinsieme \(B \subset \N^n\) l'elemento \(\ordine{lex}\) minimo è dato, come nella costruzione della domanda precedente, dall'elemento avente componenti \(<\)-minime in \(B\).
 
 \paragraph{Sulle successioni di numeri naturali.} Si consideri l'insieme delle successioni di naturali con ordine lessicografico \(({}^\N\N, <_{\mathrm{lex}})\). Possiamo dire che esso sia un ordine totale? E che sia un buon ordine?
-\begin{proof}[Risposta]
+\begin{proof}[Risposta, {\bf sbagliata}.]
   La risposta verrà articolata nel seguente modo: prima si mostrerà che \(<_{\mathrm{lex}}\) è un ordine parziale, dopo si proverà l'esistenza di un \(<_{\mathrm{lex}}\)-minimo elemento per ogni sottoinsieme \(B \subseteq {}^\N\N\). Ciò prova che si è in presenza di un buon ordine e conseguentemente di un ordine totale.
 
   La relazione d'ordine è antiriflessiva, poiché affermare che \(a <_{\mathrm{lex}} a\) con \(a \in {}^\N\N\) condurrebbe a dire che esiste un elemento \(a_i, i \in \N\) della successione \(a\) per cui \(a_i < a_i\), falso poiché la relazione d'ordine naturale è antiriflessiva. Supponendo \(a,b,c \in {}^\N\N\) con \(a <_{\mathrm{lex}} b\) e \(b <_{\mathrm{lex}} c\) significherebbe dire che esistono \(i,i' \in \N\) con \(i < i'\) tali che \(a,b\) differiscano per la prima volta per l'elemento \(i\)-simo della successione, mentre \(b,c\) differiscono per la prima volta in posizione \(i'\)-sima. Poiché \(b,c\) hanno uguale elemento in posizione \(i\)-sima, ne segue che \(a <_{\mathrm{lex}} c\).
@@ -260,7 +214,7 @@ Si riesce facilmente a verificare che \(<_{\mathrm{lex}}\) è un ordine totale s
   \dotsb < a_{n+1} < a_n < \dotsb < a_2 < a_1 < a_0
   \]
 \end{dfn}
-\begin{thm}[Criterio di buon ordinamento?]
+\begin{thm}[Caratterizzazione di buoni ordini, 1]
   Sia \((A, <)\) un insieme totalmente ordinato. Sono equivalenti:
   \begin{enumerate}
     \item \((A,<)\) è un buon ordine;
@@ -269,10 +223,10 @@ Si riesce facilmente a verificare che \(<_{\mathrm{lex}}\) è un ordine totale s
 \end{thm}
 \begin{proof}
   Dimostriamo i due versi dell'equivalenza.
-  \begin{itemize}
+  \begin{description}
     \item[\(1) \implies 2)\)] Ragioniamo per \emph{contrapposizione}, provando equivalentemente che \(\lnot 2) \implies \lnot 1)\). Assumiamo dunque che esista in \(A\) una catena infinita discendente numerabile \((a_n)_{n \in \N}\) e sia \(B = \lbrace a_n \colon n \in \N \rbrace\). Si ha che \(\emptyset \neq B\) e inoltre \(B\) non ha minimo elemento, poiché: supposto essere \(b = \min B = a_{\bar{n}}\) per qualche \(\bar{n} \in \N\), ma \(a_{\bar{n}+1} < a_{\bar{n}}\), dunque si cadrebbe in un assurdo.
     \item[\(2) \implies 1)\)] Ragioniamo nuovamente per contrapposizione: assumiamo dunque che \((A,<)\) non sia un buon ordine, dunque esiste un sottoinsieme \(\emptyset \neq B \subseteq A\) tale che \(B\) non abbia elemento \(<\)-minimo. Vogliamo usare \(B\) per definire una catena infinita discendente (numerabile) in \(A\), ottenendo quindi \(\lnot 2)\). Sia \(a_0 \in B\): poiché \(B\) non ha minimo, la collezione \(\lbrace b \in B \colon b < a_0\rbrace\) è non vuota; definisco \(A_1 = \lbrace b \in B \colon b < a_0\rbrace\). Sia \(a_1 \in A_1\). Allora \(a_1 < a_0\): procediamo in questo modo. Formalmente, abbiamo fissato \(a_0 \in B\), supponendo di aver definito \(a_n < a_{n-1} < \dotsb < a_1 < a_0\) elementi di \(B\), scegliamo \(a_{n+1}\) in \(\lbrace b \in B \colon b < a_n\rbrace\) che è non vuoto poiché stiamo lavorando sotto l'ipotesi che \(B\) non abbia elemento minimo. Otteniamo così una catena infinita discendente.
-  \end{itemize}
+  \end{description}
 \end{proof}
 Alla luce di questo teorema, possiamo dire che \({}^\N\N\) munito dell'ordine lessicografico {\bf non} è un buon ordine. Per esempio,
 \[
@@ -282,26 +236,158 @@ Alla luce di questo teorema, possiamo dire che \({}^\N\N\) munito dell'ordine le
 
 \paragraph{Let's go back to the Induction Mountain (for a while).} Avevamo formulato il principio di induzione sui naturali in tre maniere equivalenti: il \emph{principio del minimo}, per cui ogni sottoinsieme non vuoto di \(\N\) ha minimo elemento - dunque, \((\N, <)\) è un buon ordine; il \emph{principio di induzione sui naturali}, per cui ogni \(S \subseteq \N\) tale che \(0 \in S\) e \(n \in S \implies s(n) \in S\) è uguale a \(\N\); il \emph{principio di induzione}, per cui ogni \(S \subseteq \N\) con la proprietà che se per \(n \in \N\) vale \(\lbrace m \in \N \colon m < n \rbrace \subseteq S \implies n \in S\) è tale che \(S = \N\).
 
-\paragraph{Possiamo caratterizzare ancora un po' gli ordini totali?} Possiamo dire che per un buon ordine sono equivalenti \(PM\) e \(PI\)? Sì.
+\paragraph{Caratterizzare ancora i buoni ordini?} Possiamo dire che per un buon ordine sono equivalenti \(PM\) e \(PI\)? Sì. Vogliamo formulare un principio di induzione per buoni ordini e provare che tale principio caratterizza i buoni ordini tra gli insiemi totalmente ordinati.
 
-Vogliamo formulare un principio di induzione per buoni ordini e provare che tale principio caratterizza i buoni ordini tra gli insiemi totalmente ordinati.
-\begin{thm}
-  Sia \((A,\order)\) un insieme totalmente ordinato. Le seguenti sono equivalenti:
+\begin{thm}[Caratterizzazione di buoni ordini, 2]
+  Sia \((A,\lhd)\) un insieme totalmente ordinato. Le seguenti sono equivalenti:
   \begin{enumerate}
-    \item \((A,\order)\) è un buon ordine;
-    \item Ogni \(S \subseteq A\) con la proprietà che per ogni \(a \in A\) se \(\lbrace b \in A \colon b \order a\rbrace \subseteq S\) allora \(a \in S\) è tale che \(S = A\) (\(*\)).
+    \item \((A,\lhd)\) è un buon ordine;
+    \item Ogni \(S \subseteq A\) con la proprietà che
+    \begin{equation}
+      \forall a \in A.\, \lbrace b \in A \colon b \lhd a\rbrace \subseteq S \implies a \in S \label{buon1}
+      \end{equation} è tale che \(S = A\).
   \end{enumerate}
 \end{thm}
 \begin{proof} Dimostriamo i due versi dell'equivalenza.
   \begin{itemize}
-    \item[\(1) \implies 2)\)] Ragioniamo per via diretta. Sia \(S \subseteq A\) che soddisfa \(*\), vogliamo provare \(S = A\) assumendo che \(S \subsetneq A\) e ricavando una contraddizione. Sia \(\bar{a} = \min (A \setminus S)\), esistente per ipotesi di buon ordinamento. Allora, \(\lbrace b \in A \colon b \order \bar{a} \rbrace \subseteq S\) e, per \(*\) \(\bar{a} \in S\). Allora \(\bar{a} \notin S\) e \(\bar{a} \in S\), si è generato il nostro assurdo e \(S \subsetneq A\) è da rifiutare. Dunque \(S = A\).
-    \item[\(2) \implies 1)\)] Sia \(S \subseteq A\) tale da non avere elemento minimo, e proviamo che esso è un insieme vuoto. Sia \(T = A \setminus S\). Sia \(a \in A\), assumiamo che \(\lbrace b \in A \colon b \order a \rbrace \subseteq T\). Può essere che \(a \notin T\)? No, altrimenti vorrebbe dire che \(a \in S\) e oltretutto \(a = \min S\), ma \(S\) è assunto essere privo di elemento minimo, dunque \(a \in T\). Ciò implica che \(T = A\) per le ipotesi fatte, inoltre \(S = \emptyset\).
+    \item[\(1) \implies 2)\)] Ragioniamo per via diretta. Sia \(S \subseteq A\) che soddisfa \eqref{buon1}, vogliamo provare \(S = A\) assumendo che \(S \subsetneq A\) e ricavando una contraddizione. Sia \(\bar{a} = \min (A \setminus S)\), esistente per ipotesi di buon ordinamento. Allora, \(\lbrace b \in A \colon b \lhd \bar{a} \rbrace \subseteq S\) e, per \eqref{buon1} \(\bar{a} \in S\). Allora \(\bar{a} \notin S\) e \(\bar{a} \in S\), si è generato il nostro assurdo e \(S \subsetneq A\) è da rifiutare. Dunque \(S = A\).
+    \item[\(2) \implies 1)\)] Sia \(S \subseteq A\) tale da non avere elemento minimo, e proviamo che esso è un insieme vuoto. Sia \(T = A \setminus S\). Sia \(a \in A\), assumiamo che \(\lbrace b \in A \colon b \lhd a \rbrace \subseteq T\). Può essere che \(a \notin T\)? No, altrimenti vorrebbe dire che \(a \in S\) e oltretutto \(a = \min S\), ma \(S\) è assunto essere privo di elemento minimo, dunque \(a \in T\). Ciò implica che \(T = A\) per le ipotesi fatte, inoltre \(S = \emptyset\).
   \end{itemize}
 \end{proof}
-\paragraph{Un po' di terminologia.} Se si vuole provare che \(A \implies B\) e:
-\begin{enumerate}
-  \item si assume \(A\) per provare \(B\) si ottiene una dimostrazione \emph{diretta}.
-  \item si prova invece \(\lnot B \implies \lnot A\), si ha una dimostrazione per \emph{contrapposizione}. Possiamo lecitamente operare in questo modo in quanto i valori di verità del modo diretto e di quello per contrapposizione sono gli stessi. (disegna tabella di verità){\bf N.B.} dimostrazione per assurdo e per contrapposizione non sono la stessa cosa!
-\end{enumerate}
-Se si vuole provare un'asserzione \(A\) e si prova invece che, assumendo la negazione di \(A\), si arriva ad una contraddizione, si ha una dimostrazione \emph{per assurdo} di \(A\).
-\end{document}
+
+\subsection{Elementi minimali. Ordini ben fondati.}
+\begin{dfn}
+  Sia \((A, <)\) un insieme parzialmente ordinato e sia \(B \subseteq A\). Un elemento \(b \in B\) è detto \emph{minimale} se non esiste nessun \(c \in B\) tale che \(c < b\).
+\end{dfn}
+Un importante aspetto della definizione di elemento minimale è che, mentre si può dire che non esiste elemento \emph{minore} di un minimale, non si può dire che il minimale sia minore o uguale a tutti gli altri elementi dell'insieme: infatti, avendo definito il minimale su un insieme parzialmente ordinato, non è sempre garantita la confrontabilità tra i suoi elementi. Inoltre, il minimale non è necessariamente unico: prendendo l'ordine parziale \(A = \lbrace a,b,c \rbrace, \lhd = \lbrace (a,b), (b,c) \rbrace\) si deduce che esso ha due elementi minimali, \(a\) e \(b\).
+
+\begin{dfn}
+  Sia \((A,<)\) un insieme parzialmente ordinato. Si dice che \(<\) è \emph{ben fondata} su \(A\) se ogni sottoinsieme non vuoto di \(A\) ha almeno un elemento minimale.
+\end{dfn}
+
+\paragraph{Alcuni esempi.} \((\N, <)\) è un ordine ben fondato, valendo il principio del minimo. In particolare, in un insieme totalmente ordinato il cui ordine è ben fondato, il minimale corrisponde al minimo. Gli interi con la relazione d'ordine usuale non costituiscono un ordine ben fondato, poiché ogni sottoinsieme della forma \(\lbrace z \in \mathbb{Z} \colon z < a, a \in \mathbb{Z}\rbrace\) non ammette un minimale.
+
+\begin{exe}
+{\bf Domanda}: \((\mathcal{P}(\N), \subset)\) è ben fondato?
+{\bf Ragionaci.} Sì, è ben fondato.
+\end{exe}
+
+\begin{thm}[Caratterizzazione di ordini ben fondati]
+  Sia \((A,<)\) un ordine parziale. Le seguenti sono equivalenti:
+  \begin{enumerate}
+    \item \((A,<)\) è ben fondato
+    \item Ogni \(B \subseteq A\) con la proprietà che
+    \[
+    \forall a \in A. \lbrace a' \in A \colon a' < a \rbrace \subseteq B \implies a \in B \label{fond1}
+    \]
+    è tale che \(B = A\).
+  \end{enumerate}
+\end{thm}
+{\bf Osservazione:} la seconda proprietà esprime un principio di induzione sugli insiemi parzialmente ordinati e ben fondati.
+\begin{proof} Dimostriamo i due versi dell'equivalenza.
+  \begin{enumerate}
+    \item Proviamo che \(1 \implies 2\). Sia \(B \subseteq A\) soddisfacente a \eqref{fond1}. Supponiamo \(B \neq A\), dunque \(A \setminus B \neq \emptyset\). Si scelga \(a\) minimale su \(A \setminus B\) e si arrivi ad una contraddizione, sfruttando la buona fondatezza dell'ordine.
+    \item Proviamo che \(2 \implies 1\). Sia \(B \subseteq A\) con \(B\) privo di elementi minimali. Basta provare che \(B = \emptyset\), ragionando su \(C = A \setminus B\) e provando che \(C\) soddisfa \eqref{fond1}. \qedhere
+  \end{enumerate}
+\end{proof}
+La proprietà espressa in \eqref{fond1} dètta un principio di induzione sugli insiemi parzialmenti ordinati e ben fondati. A riguardo della dimostrazione, il "principio attivo" utilizzato è lo stesso utilizzato nel caso della caratterizzazione degli insiemi ben ordinati!
+
+
+\subsection{Ricorsione sui numeri naturali.}
+
+Nonostante sia naturale pensare che la scrittura
+\[
+  \begin{cases}
+    0! = 1 \\ s(n)! = s(n)n!
+  \end{cases}
+\]
+definisca sui numeri naturali la funzione fattoriale, con quanto visto finora non abbiamo nessuna certezza sul fatto che essa sia effettivamente una funzione e se sia univocamente determinata. Perché, ad esempio,
+\[
+  \begin{cases}
+    0\escrov = 1 \\ (n+1)\escrov = s(n)\cdot(n+2)\escrov
+  \end{cases}
+\]
+intuitivamente non definisce una funzione? Proviamo a calcolare qualche valore:
+\[
+2\escrov = 2\cdot3\escrov,\quad 3\escrov = 3\cdot4\escrov,\dots
+\]
+E perché ci sentiamo di dire che è possibile definire la funzione nel seguente modo?
+\[
+  \begin{cases}
+    n + 0 = n \\ n + s(m) = s(n + m)
+  \end{cases}
+\]
+Cosa ci garantisce che tutte queste scritture definiscano funzioni?
+
+\begin{thm}[Ricorsione sui naturali]
+  Siano \(k \in \N\) e \(f \colon \N \times \N \to \N\). Allora, esiste ed è unica la funzione \(g \colon \N \to \N\) tale che
+  \begin{equation}
+    \begin{cases}
+      g(0) = k \\ g(s(n)) = f(n, g(n)).
+    \end{cases} \label{eqn:ric1}
+  \end{equation}
+\end{thm}
+\begin{proof}
+  Siano \(g_1, g_2 \colon \N \to \N\) funzioni che soddisfano a \eqref{eqn:ric1}. Proviamo che \(g_1 = g_2\), ovvero che \(A = \lbrace n \in \N \colon g_1(n) = g_2(n) \rbrace\) coincida con \(\N\). Verifichiamolo per induzione.
+  \begin{enumerate}
+    \item \(0 \in A\), poiché \(g_1(0) = k = g_2(0)\);
+    \item Assumiamo che \(n \in A\) e proviamo che ciò implica che \(s(n) \in A\). Intanto, \(n \in A \iff g_1(n) = g_2(n)\). Con le assunzioni fatte, si ottiene che
+    \[
+    g_1(s(n)) = f(n,g_1(n)) = f(n,g_2(n)) = g_2(s(n))
+    \]
+    ossia \(n \in A \implies s(n) \in A\).
+  \end{enumerate}
+  Possiamo concludere che \(A = \N\), da cui l'unicità di \(g\) soddisfacente a \eqref{eqn:ric1}. Esiste questa funzione?
+
+  Consideriamo una funzione insiemisticamente (pensiamo all'insieme delle coppie ordinate) e sia \(n \in \N\). Diciamo che una funzione \(h \colon \lbrace 0,\dots,n \rbrace \to \N\) è una \emph{\(n\)-approssimazione} se
+  \begin{equation}
+    \begin{cases}
+      h(0) = k \\ h(s(m)) = f(m, h(m)) & \forall m < n
+    \end{cases}
+  \end{equation}
+  Vogliamo provare che per ogni \(n \in \N\) esiste una \(n\)-approssimazione e inoltre che essa è unica. La sua unicità si prova allo stesso modo di quella di \(g\). Per l'esistenza, consideriamo \(B = \lbrace n \in \N \colon \text{esiste una n-approssimazione} \rbrace\). Vogliamo provare che \(B = \N\). Procediamo nuovamente per induzione.
+  \begin{enumerate}
+    \item Esiste una \(0\)-approssimazione? Sia \(g_0 \colon \lbrace 0 \rbrace \to \N\), con \(g_0(0) = k\). Insiemisticamente, \(g_0(0) = \lbrace (0,k) \rbrace\).
+    \item Assumiamo che esista una \(n\)-approssimazione \(g_n\) e proviamo l'esistenza di \(g_{s(n)}\). Se \(g_{s(n)}\) esiste, come deve essere strutturata rispetto a \(g_n\)? Osserviamo che \(\restr{g_{s(n)}}{\lbrace 0,\dots,n}\) è una \(n\)-approssimazione e per unicità di una \(n\)-approssimazione, essa è uguale a \(g_n\). Allora, possiamo dire che
+    \[
+    g_{s(n)} = g_n \cup \lbrace (s(n), f(n, g_n(n))) \rbrace
+    \]
+    è una \(s(n)\)-approssimazione. \emph{Operativamente}, possiamo definire
+    \[g_{s(n)}(m) =
+    \begin{cases}
+      g_n(m) & m \le n \\ f(n,g_n(n)) & m = s(n)
+    \end{cases}
+    \]
+    Allora, per ogni \(n \in \N\) esiste ed è unica un \(n\)-approssimazione. Quindi,
+    \begin{equation}
+    g_0 \subset g_1 \subset \dotsb \subset g_n \subset g_{s(n)} \subset \dotsb \label{eqn:ric2}
+  \end{equation}
+    Sia \(g = \bigcup_{n \in \N} g_n\). Per \eqref{eqn:ric2}, \(g\) è una funzione; \(\dom g = \bigcup_{n \in \N} \dom g_n = \N\) e \(g\) soddisfa \eqref{eqn:ric1}
+  \end{enumerate}
+\end{proof}
+
+\paragraph{Alcuni esempi.} Volendo calcolare \(g(37)\), è sufficiente considerare una \(n\)-approssimazione abbastanza grande da contenere il valore di \(g(37)\); la più piccola a contenerlo è \(g_{37}\) e \(g(37) = g_{37}(37) = g_k(37)\) per ogni \(k > 37\).
+
+Vogliamo usare il teorema di ricorsione sui naturali per provare l'esistenza e l'unicità di una funzione che soddisfi le condizioni
+\begin{equation}
+  \begin{cases}
+    0! = 1 \\ s(n)! = s(n)n!
+  \end{cases} \label{eqn:ric3}
+\end{equation}
+Vogliamo quindi trovare \(k \in \N\) e \(f \colon \N \times \N \to \N\) tali che, applicando a questi il teorema di ricorsione, la funzione \(g\) di cui il teorema afferma esistenza ed unicità sia tale da soddisfare \eqref{eqn:ric3}. Osserviamo subito che dev'essere \(k = 1\). Inoltre, possiamo prendere \(f((h,k)) = s(h)\cdot k\). Allora la \(g\) di cui sopra è unica tale che
+\[
+\begin{cases}
+  g(0) = 1 \\ g(s(n)) = f(n, g(n)) = s(n)\cdot g(n)
+\end{cases}
+\]
+che si può notare essere la definizione di \emph{fattoriale}.
+{\bf Esercizio:} Trova \(k\), \(f\) tali da definire con il teorema di ricorsione la funziona che somma 2 ad un numero naturale.
+
+Potremmo anche definire funzioni che si appoggi su più casi base, esempio:
+\begin{equation}
+  \begin{cases}
+    F_0 = 0 \\ F_1 = 1 \\ F_{n+2} = F_n + F_{n+1}
+  \end{cases}
+\end{equation}
+Utilizzando una versione adattata del teorema di ricorsione sui naturali, è possibile garantire esistenza ed unicità estendendo a piacere il numero di condizioni iniziali.
+Cosa possiamo provare sui numeri di Fibonacci? {\bf Esercizio}, posso dire che \(F_{3n}\) è pari per ogni \(n \in \N\)? Prova a definire induttivamente la sommatoria e la produttoria dei primi \(n\) numeri naturali.
