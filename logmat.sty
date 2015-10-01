@@ -1,0 +1,24 @@
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ordine}[1]{\lhd_{\mathrm{#1}}}
+% Freccia carina per l'assurdo.
+\newcommand{\assurdo}{\text{\lightning}}
+% Punto esclamativo rovesciato.
+\newcommand{\escrov}{\text{\textexclamdown}}
+% Tutto quello che serve per teoremi, eccetera.
+\theoremstyle{definition}
+\newtheorem{dfn}{Definizione}[section]
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prp}{Proposizione}[section]
+\newtheorem{exe}{Esercizio}[section]
+% From tex.SE, as always.
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
+% Virgolette fatte bene.
+\newcommand{\virg}[1]{‘‘#1’’}
+% Dominio di funzione.
+\DeclareMathOperator{\dom}{dom}

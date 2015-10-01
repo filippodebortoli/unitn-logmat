@@ -13,30 +13,7 @@
 \usepackage{wasysym} %Simboletti carini, per tutti.
 %\usepackage[osf]{mathpazo}
 
-\theoremstyle{definition}
-\newtheorem{dfn}{Definizione}[section]
-
-\theoremstyle{plain}
-\newtheorem{thm}{Teorema}[section]
-\newtheorem{prp}{Proposizione}[section]
-\newtheorem{exe}{Esercizio}[section]
-
-\newcommand{\N}{\mathbb{N}}
-%\newcommand{\lhd}{\vartriangleleft}
-\newcommand{\ordine}[1]{\vartriangleleft_{\mathrm{#1}}}
-\newcommand{\assurdo}{\text{\lightning}}
-\newcommand{\escrov}{\text{\textexclamdown}}
-
-\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
-  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
-  #1 % the function
-  \vphantom{\big|} % pretend it's a little taller at normal size
-  \right|_{#2} % this is the delimiter
-  }}
-
-\newcommand{\virg}[1]{‘‘#1’’}
-
-\DeclareMathOperator{\dom}{dom} %Dominio di funzione.
+\usepackage{logmat}
 
 \begin{document}
 
