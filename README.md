@@ -5,7 +5,7 @@ Questi sono gli appunti spesso non aggiornati o pieni errori di uno studente del
 
 Cosa puoi trovare qui?
 ---
-+ **fl.tex**, file contenente appunti di *Fondamenti di Logica Matematica*.
++ **logmat.tex**, file contenente appunti di *Fondamenti di Logica Matematica*.
 + **st.tex**, file contenente appunti di *Statistica matematica*.
 
 
