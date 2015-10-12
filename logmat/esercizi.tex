@@ -134,3 +134,37 @@ Questa dimostrazione è per contrapposizione.
   La prima affermazione è...vera?! Sia \(\bar{a} = \min A\), esistente per buon ordine dell'insieme. Sia \(B = \lbrace b \in A \colon \bar{a} < b \rbrace = A \setminus \lbrace \bar{a} \rbrace\): per buon ordine, esso conterrà un elemento \(a\) che è \(<\)-minimo. Dunque, si avrà che \(\bar{a} < a\) e che non esiste nessun elemento \(c \in A\) tale che \(\bar{a} < c < a\): possiamo dire che \(\bar{a}\) è predecessore immediato di \(a\). Agendo induttivamente come descritto, si trova che ogni elemento non-minimo di \(A\) ammette predecessore immediato.
   La seconda affermazione è vera: infatti, preso \(B = A \setminus \lbrace b \in A \colon b < a\rbrace \cup \lbrace a \rbrace\), per buon ordine di \(A\) esso ammette un elemento \(<\)-minimo, che sarà dunque il successore immediato di \(a\).
 \end{proof}
+
+Foglio 4
+\begin{proof}
+4.1\\
+(a) deriva banalmente dall'assioma di separazione e della coppia.\\
+(b)se $(x=z)$ e $(y=w)\implies(x,y)=(z,w)$ lo si ha per la sostitutività dell'uguaglianza.\\
+l'implicazione inversa la si trova verificando l'assioma di estensionalità per casi.
+\end{proof}
+\begin{proof}
+4.2\\
+easy.
+\end{proof}
+\begin{proof}
+4.3\\
+basta vreare una bieziona tra $V_1$ e $V$(collezione di tutti gli insiemi) se questa biezione esiste e se per assurdo $V_1$ fosse un insieme allora si avrebbe che anche $V$ è un insieme Assurdo!\\
+la biezione è data banalmente da \(\lbrace x \rbrace\to x\).
+\end{proof}
+\begin{proof}
+4.4\\
+boh!
+\end{proof}
+\begin{proof}
+4.5\\
+Basta prendere una funzione $f:\mathcal{P}(A)\to{A}_2$ così definita:
+$$A\to f_A(n) = \begin{cases} 1 & \mbox{se } n\in \mbox{A} \\ 0 & \mbox{se } n\not\in\mbox{A} \end{cases}$$
+\end{proof}
+\begin{proof}
+4.7\\
+supponiamo per assurdi che esista una collezione $C$ tale che $C$ e $D$ siano entrambi insiemi allora $C\cup D$ è un insieme,ma si nota facilmente che $C\cup D=V$ dove $V$ è la classe di tutti gli insiemi infatti preso un insieme $x$ qualsiasi abbiamo due casi:
+\begin{enumerate}
+\item $x\in C\implies x\in C\cup D$
+\item $x\not\in C\implies x\in D\implies x\in C\cup D$
+\end{enumerate}
+\end{proof}
