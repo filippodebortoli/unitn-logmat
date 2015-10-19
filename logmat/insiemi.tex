@@ -1,11 +1,18 @@
-\section{Assiomi per la teoria degli insiemi (ZF).}
+\section{Teoria degli insiemi.}
 Introduciamo gli assiomi per la teoria degli insiemi specificati da Zermelo-Fraenkel. Tra questi troviamo nozioni di uguaglianza, appartenenza, insieme, su cui vengono poi provate varie proprietà o conseguenze. {\bf Beware}, chiunque ti dia una definizione di insieme bleffa. Infatti, abbiamo che l'insieme è una nozione \emph{primitiva}, non definita ma di cui si assume l'esistenza. Similmente, anche l'appartenenza è una nozione primitiva! Anche l'uguaglianza viene assunta come nozione primitiva, nonostante ci siano stati tentativi di definirla (vedi Leibniz). Sono \emph{oggetti} privi di definizione. Si danno \emph{assiomi} per descriverne il comportamento.
 
 Gli assiomi devono essere formulati in un qualche linguaggio formale, per:
 \begin{enumerate}
-  \item evitare ambiguità: per esempio, \virg{Il più piccolo numero naturale non definibile con meno di venti parole della lingua italiana} è tuttavia definito con meno di venti parole ("Paradosso" di Berry)! Oppure, \virg{Io sto mentendo} sarebbe vera se e solo se io stessi dicendo la verità...come risolvere questi tranelli linguistici Wittgensteiniani? Se avessimo una nozione matematica di \emph{definibilità}, queste ambiguità sparirebbero.
-  \item poter formulare in maniera accurata proprietà del tipo: \virg{dall'insieme di ipotesi \(S\) si dimostra che vale l'asserzione \(\alpha\)}. Ci serve una nozione rigorosa di \emph{dimostrabilità} per un insieme di assiomi.
+  \item evitare ambiguità: per esempio, \virg{Il più piccolo numero naturale non definibile con meno di venti parole della lingua italiana} è tuttavia definito con meno di venti parole (\virg{Paradosso} di Berry)! Oppure, \virg{Io sto mentendo} sarebbe vera se e solo se io stessi dicendo la verità\ldots{}come risolvere questi tranelli linguistici Wittgensteiniani? Se avessimo una nozione matematica di \emph{definibilità}, queste ambiguità sparirebbero.
+  \item poter formulare in maniera accurata proprietà del tipo: \virg{dall'insieme di ipotesi \(S\) si dimostra che vale l'asserzione \(\alpha{}\)}. Ci serve una nozione rigorosa di \emph{dimostrabilità} per un insieme di assiomi.
 \end{enumerate}
+
+  \begin{dfn}[Proprietà]
+    Una \emph{proprietà} è un enunciato esprimibile mediante l'uso di simboli in un determinato linguaggio formale.
+  \end{dfn}
+
+  \paragraph{Ad esempio.} L'enunciato \virg{\(x\) è primo} esprime una proprietà, a differenza di \virg{\(x\) è bello}.
+
 \subsection{Assiomi per l'uguaglianza.}
 Detti anche \emph{assiomi logici}.
 \begin{enumerate}
@@ -24,3 +31,313 @@ Detti anche \emph{assiomi logici}.
 \end{enumerate}
 
 Possiamo osservare un atteggiamento simile in geometria piana, dove punto, retta e piano sono dati come concetti primitivi. Vedi Hilbert con \virg{tavoli, sedie e pinte di birra}.
+
+{\bf recupera appunti Lunedì 5 Ottobre!}
+
+\subsection{Assiomi di Zermelo-Fraenkel e conseguenze.}
+
+\begin{description}
+  \item[A0 (esistenza)] esiste un insieme, ovvero un oggetto uguale a sè stesso; formalmente,
+  \begin{equation}
+    \exists{}x. \; x = x.
+  \end{equation}
+  \item[A1 (estensionalità)] ogni due insiemi tali da avere gli stessi elementi sono di fatto uguali:
+  \begin{equation}
+    \forall x. \forall y. \left(\forall z.\left(z \in x \iff z \in y \right) \implies x = y \right).
+  \end{equation}
+  \item[A2 (coppia)] per ogni due insiemi, ne esiste un terzo a cui entrambi appartengono:
+  \begin{equation}
+    \forall x. \forall y. \left(\exists z. \; x \in z \land y \in z \right).
+  \end{equation}
+  \item[A3 (schema di separazione)] data una proprietà \(\phi(y)\) esprimibile in \(ZF\), per ogni insieme \(x\) la collezione
+  \begin{equation}
+    \lbrace y \in x \colon \phi(y) \rbrace
+  \end{equation}
+  costituisce un insieme:
+  \begin{equation}
+    \forall x. \exists y. \forall z. \left(z \in y \iff z \in x \land \phi(z)\right).
+  \end{equation}
+  \item[A4 (unione)] per ogni famiglia di insiemi, la collezione
+  \begin{equation}
+    \bigcup F = \lbrace x \colon \exists y. \; y \in F \land x \in y \rbrace
+  \end{equation}
+  costituisce un insieme.
+  \item[A5 (potenza)] per ogni insieme \(x\), la collezione dei suoi sottoinsiemi è ancora un insieme:
+  \begin{equation}
+    \forall x. \exists y. \left(\forall z. (z \subseteq x \implies z \in y)\right).
+  \end{equation}
+  \item[A6 (schema di rimpiazzamento)] data una proprietà \(\phi(x,y)\) esprimibile con il linguaggio di \(ZF\) e un insieme \(z\) tale che per ogni suo elemento \(x\) esista un unico \(y\) tale che \(\phi(x,y)\), allora esiste un insieme \(u\) contenente tutti gli \(y\) per cui esista \(x \in z\) soddisfacente a \(\phi(x,y)\):
+  \begin{equation}
+    \forall z. \left(\forall x \in z. \left(\exists!y.\; \phi(x,y)\right) \implies \exists u. \forall y. \left((\exists x \in z. \; \phi(x,y)) \implies y \in u\right)\right).
+  \end{equation}
+  \item[A7 (infinito)] esiste un insieme \emph{induttivo}, cioè contenente \(\emptyset{}\) e, ogniqualvolta \(y\) appartiene all'insieme, anche \(y \cup \lbrace y \rbrace\) vi appartiene:
+  \begin{equation}
+    \exists x.\left(\emptyset \in x \land \forall y.\left(y \in x \implies y \cup \lbrace y \rbrace \in x \right)\right).
+  \end{equation}
+  \item[A8 (fondazione)] ogni insieme è costruito a partire dall'insieme vuoto, iterando l'applicazione dell'assioma di potenza e dell'assioma di unione:
+  \begin{equation}
+    \forall x.\left(x \ne \emptyset \implies \exists y.\left(y \in x \land y \cap x = \emptyset\right)\right).
+  \end{equation}
+\end{description}
+
+\paragraph{Sullo schema di separazione.} Cosa ci trattiene dall'essere più liberali e stabilire semplicemente che, per ogni proprietà \(\phi(y)\), la collezione
+\begin{equation}
+  \lbrace y \colon \phi(y) \rbrace
+\end{equation}
+sia un insieme?
+
+Assumiamo che la proprietà usata sia \virg{\(y\) non appartiene a \(y\)}: allora, se ogni proprietà definisse intrinsecamente un insieme, la collezione
+\begin{equation}
+  R = \lbrace y \colon y \notin y \rbrace
+\end{equation}
+sarebbe un insieme. Tuttavia, si giungerebbe ad una contraddizione in termini logici, poiché
+\begin{equation}
+  R \in R \iff R \notin R.
+\end{equation}
+
+In effetti, questo fatto, noto come \emph{paradosso di Russell}, sancisce l'impossibilità di avere insiemi definiti esclusivamente in base a proprietà. Similmente, la collezione di tutti gli insiemi
+\begin{equation}
+  V = \lbrace x \colon x = x \rbrace
+\end{equation}
+non è insieme: se lo fosse, adoperando lo schema di separazione otterremmo che
+\begin{equation}
+  X = \lbrace x \in V \colon x \notin x \rbrace
+\end{equation}
+è un insieme. Si giungerebbe anche in questo caso ad una contraddizione logica:
+\begin{align*}
+  X \in X &\iff X \notin X \\ X \in X &\iff X \in V \setminus X
+\end{align*}
+e di fatto, per estensionalità \(X\) e \(V \setminus X\) sarebbero lo stesso insieme.
+
+La collezione \(V\) consente inoltre di considerare elementi \emph{non} appartenenti ad un insieme. Infatti, preso un insieme \(A\), ogni suo elemento è in \(V\), ma vi sono elementi di \(V\) -- cioè insiemi -- non contenuti in \(A\).
+
+\begin{dfn}[Classe propria]
+  Una collezione che non è un insieme si dice \emph{classe propria}.
+\end{dfn}
+
+\begin{thm}[Insieme vuoto]
+  Esiste ed è unico un insieme privo di elementi, detto \emph{insieme vuoto} e denotato con \(\emptyset{}\).
+\end{thm}
+\begin{proof}
+  Per l'assioma di esistenza, è garantita la possibilità di considerare un insieme \(A\) da cui, mediante schema di separazione, si può ottenere un insieme privo di elementi
+  \begin{equation}
+    B = \lbrace x \in A \colon x \ne x \rbrace,
+  \end{equation}
+  sfruttando la natura riflessiva dell'uguaglianza.
+
+  Siano \(C\) e \(C'\) due insiemi privi di elementi: essi posseggono gli stessi elementi -- in effetti, non ne posseggono. Grazie all'assioma di estensionalità, concludiamo che \(C\) e \(C'\) sono lo stesso insieme.
+\end{proof}
+
+\paragraph{Sull'assioma di coppia.} Presi due insiemi \(A\) e \(B\), possiamo garantire l'esistenza di un terzo insieme i cui elementi siano \emph{esattamente} \(A\) e \(B\)?
+
+Per assioma di coppia, esiste un insieme \(C\) contenente sia \(A\) che \(B\); applicando lo schema di separazione con \(\phi(x) = x = A \lor x = B\), otteniamo quanto voluto:
+\begin{equation}
+  D = \lbrace A, B \rbrace = \lbrace x \in C \colon \phi(x) \rbrace.
+\end{equation}
+
+Possiamo fare anche di più. Infatti, è possibile definire la \emph{coppia ordinata} di \(x\) e \(y\) nel seguente modo:
+\begin{equation}
+  (x, y) \Let \lbrace \lbrace x \rbrace, \lbrace x, y \rbrace \rbrace.
+\end{equation}
+Rifacendoci a quanto affermato precedentemente, ponendo \(A = \lbrace x \rbrace\) e \(B = \lbrace x, y \rbrace\), si ottiene che \((x, y)\) è un insieme. Inoltre, possiamo stabilire la natura dell'uguaglianza sulle coppie ordinate:
+\begin{equation}
+  (a,b) = (c,d) \iff a = c \land b = d.
+\end{equation}
+Infatti, se \(a = c\) e \(b = d\), per assioma di estensionalità gli insiemi \(\lbrace a \rbrace\) e \(\lbrace c \rbrace\) -- rispettivamente, \(\lbrace a, b \rbrace\) e \(\lbrace c, d \rbrace\) -- sono gli stessi, da cui l'uguaglianza delle coppie ordinate sempre per estensionalità.
+Viceversa, se \((a, b) = (c, d)\), applicando l'assioma di estensionalità otteniamo due possibili situazioni:
+\begin{enumerate}
+  \item \begin{align*}
+          \lbrace a \rbrace = \lbrace c \rbrace \land \lbrace a, b \rbrace = \lbrace c, d \rbrace \implies a = c \land \lbrace b \rbrace = \lbrace d \rbrace \implies a = c \land b = d.
+        \end{align*}
+\end{enumerate}
+
+{\bf Problema:} possiamo definire la coppia ordinata \((A,B)\) dei due insiemi \(A\) e \(B\) e garantire che essa sia un insieme, per ogni \(A\),\(B\) insiemi? Una prima proprietà è che \((A,B) = (C,D)\) ssse \(A = C\) e \(B = D\). Usiamo un piccolo trucco Kuratowski?). Sia
+\[
+(A,B) = \left\lbrace \lbrace A\rbrace, \lbrace A,B \rbrace \right\rbrace
+\]
+dove il membro a destra dell'uguaglianza è un insieme grazie all'assioma di coppia.
+Provare che, presi \(A,B,C,D\) insiemi, vale l'uguaglianza per coppia ordinata. (l'implicazione da dx a sx è quasi ovvia)
+
+\paragraph{Sull'assioma di unione.} Possiamo dire che, ogniqualvolta \(A\) e \(B\) siano insiemi,
+\begin{equation}
+  A \cup B = \lbrace x \colon x \in A \lor x \in B \rbrace
+\end{equation}
+è a sua volta un insieme? Possiamo grazie all'assioma di unione, che ci assicura che
+\begin{equation}
+  \bigcup \lbrace A, B \rbrace = \lbrace x \colon x \in A \lor x \in B \rbrace = A \cup B
+\end{equation}
+è un insieme. Inoltre, \(\lbrace A, B \rbrace\) è un insieme per assioma di coppia.
+
+\begin{dfn}[Famiglia di insiemi]
+  Una \emph{famiglia di insiemi} è un insieme i cui elementi sono altri insiemi. In realtà, gli elementi di un qualunque insieme - se ce ne sono - sono a loro volta insiemi, e gli elementi di elementi di un insieme sono insiemi...e così via. Consideriamo cioè gli insiemi che sono \emph{ereditariamente} tali. Dunque, dire \emph{famiglia di insiemi} è equivalente a dire \emph{insieme di insiemi}, o più semplicemente \emph{insieme}.
+\end{dfn}
+
+In particolare, notiamo che
+\begin{equation}
+  \bigcup\emptyset = \lbrace x \colon \exists y \in \emptyset. (x \in y) \rbrace = \emptyset.
+\end{equation}
+
+\paragraph{Famiglie-intersezione.} Sulla base degli assiomi da A0 ad A3, non riusciamo a garantire che la famiglia-unione sia un insieme, ma possiamo invece assicurarci che lo sia la famiglia-intersezione
+\begin{equation}
+  \bigcap F = \lbrace x \colon \forall y \in F. (x \in y) \rbrace.
+\end{equation}
+
+Osserviamo anzitutto che, dati gli insiemi \(A\) e \(B\), la collezione
+\begin{equation}
+  A \cap B = \lbrace x \colon x \in A \land x \in B \rbrace
+\end{equation}
+è un insieme, poiché è separabile da \(A\) come \(\lbrace x \in A \colon x \in B \rbrace\).
+
+Allora, se \(F \ne \emptyset\) esiste un insieme \(A\) contenuto in \(F\) e grazie allo schema di separazione, è un insieme anche
+\begin{equation*}
+  \cap F = \lbrace x \in A \colon \forall y \in F (x \in y)\rbrace
+\end{equation*}
+
+Cosa possiamo dire di \(\bigcap\emptyset{}\)?
+\begin{equation*}
+  \bigcap\emptyset = \lbrace x \colon \forall y \in \emptyset. (x \in y) \rbrace
+\end{equation*}
+Poiché non vi sono elementi in \(\emptyset{}\), ogni oggetto è contenuto in nessuno dei suoi elementi, e quindi la famiglia-intersezione \(\bigcap\emptyset{}\) non è un insieme ma una classe propria, in particolare è uguale a \(V\).
+
+\paragraph{Sull'assioma di potenza.} Ciò che dice l'assioma di potenza, intuitivamente, è che l'insieme delle parti di un insieme \(A\)
+\begin{equation}
+  \mathcal{P}(A) = \lbrace x \colon x \subseteq A \rbrace
+\end{equation}
+è ancora un insieme. Inoltre, adoperando lo schema di separazione possiamo aumentare la \virg{potenza} dell'assioma di potenza, deducendo che
+\begin{equation}
+  \forall x \exists y \forall z (z \subseteq x \iff z \in y).
+\end{equation}
+Ciò che \emph{non} dice l'assioma di potenza è che le sottocollezioni di un insieme \(x\) sono ancora insiemi. Invece, afferma più semplicemente che è possibile raccogliere tutte le sottocollezioni di \(x\) che sono insiemi in una collezione che è un insieme.
+
+Un'ultima, potente, caratteristica di questo assioma è che esso consente di ottenere insiemi di cardinalità arbitrariamente grande: basti pensare a quanto dimostrato da Cantor.
+
+\begin{thm}[Cantor]
+  Per nessun insieme \(A\) si ha che \(A \not\approx P(A)\).
+\end{thm}
+
+Una prima cosa che possiamo dire è che \(A \subset P(A)\), poiché esiste l'inclusione iniettiva che manda \(a \in A\) in \(\lbrace a \rbrace \in P(A)\). Questo ci dice che non esiste un insieme di cardinalità massima!
+
+blablabla
+{\bf A6: Schema di rimpiazzamento.} L'interpretazione profana di questo assioma è: l'immagine di un insieme tramite una funzione è un insieme. (trovi tutto sulle note del prof.)
+
+\begin{dfn}
+  Un insieme \(A\) si dice \emph{induttivo} se \(\emptyset\) appartiene ad \(A\) e ogniqualvolta \(B \in A\), si ha \(B \cup \lbrace B \rbrace \in A\).
+\end{dfn}
+{\bf A7: Assioma di infinito.}
+\begin{equation}
+  \exists x \left( \emptyset \in x \land \forall y (y \in x \implies y \cup \lbrace y \rbrace \in x)\right)
+\end{equation}
+Ovvero esiste un insieme induttivo.
+Com'è fatto \(x\)? Anzitutto, un \(x\) come in \(\exists x\) si dice \emph{insieme induttivo}.
+\begin{align*}
+  &\emptyset \in x \\
+  &\emptyset \in x \implies \emptyset \cup \lbrace \emptyset \brace = \lbrace \emptyset \rbrace \in x \\
+  &\lbrace \emptyset \rbrace \in x \implies \lbrace \emptyset \rbrace \cup \lbrace\lbrace \emptyset \rbrace\rbrace = \lbrace \emptyset, \lbrace \emptyset \rbrace \rbrace \in x
+\end{align*}
+e così via. Questa costruzione ci permette di \virg{riscoprire} i numeri naturali, vedendoli come insiemi: \(0 \overset{\mathrm{def}}{=} \emptyset\), \(1 = \lbrace \emptyset \rbrace\), e così via. Ciò ci consente di vedere chiaramente anche come funziona la relazione d'ordine sui naturali, vista come relazione di appartenenza.
+
+Si dà una definizione rigorosa di \emph{numero naturale} come un \emph{ordinale finito} e si prova che ogni insieme induttivo contiene tutti gli ordinali finiti, cioè tutti i numeri naturali. Allora dato un insieme induttivo \(A\), per separazione consideriamo
+\[
+\N = \lbrace x \in A \colon x \text{ è un numero naturale.} \brace,
+\]
+dunque la collezione dei naturali è un insieme.
+\paragraph{Osservazione.} La relazione d'ordine sui naturali è l'appartenenza, infatti:
+\[
+\emptyset \subset \lbrace \emptyset \rbrace \implies 0 < 1
+\]
+e così procedendo.
+
+\paragraph{Assioma di fondazione.} Partiamo con una {\bf domanda}: gli assiomi dati finora permettono di dimostrare - o di refutare - l'esistenza di un insieme \(A\) tale che \(A = \lbrace A \rbrace\)? Se così fosse, in particolare si avrebbe che \(A \in A\). In realtà, se gli assiomi sono consistenti, allora essi non sono in grado nè di dimostrare nè di refutare l'esistenza di un insieme appartenente a sè stesso. L'assioma di fondazione vieta l'esistenza di qualche insieme con tale proprietà.
+\begin{equation}
+  \forall x (x \ne \emptyset \implies \exists y (y \in x \land y \cap x = \emptyset))
+\end{equation}
+Può sembrare strano intersecare un insieme con un elemento, ma ricorda: gli elementi sono a loro volta insiemi!
+
+In effetti, l'assioma di fondazione garantisce che tutti gli insiemi sono generati a partire da \(\emptyset\), iterando opportunamente l'operazione di potenza. Pani e pesci, amico mio. L'assioma di fondazione dice in parole formali che un insieme è più dei suoi elementi, e che prima vengono essi.
+
+ZF + AC (Axiom of Choice) = ZFC
+
+Finora, gli assiomi presentati sono tutti facenti parte della teoria di Zermelo-Fraenkel. Vogliamo aggiungere a \(ZF\) un altro assioma: l'Assioma di Scelta (\(AC\)).
+
+"Adesso sevizio qualcuno"
+
+\begin{dfn}
+Sia \(F\) una famiglia di insiemi non vuoti. Una \emph{funzione di scelta} su \(F\) è una funzione \(ch \colon F \to \cup F\), con la proprietà che, per ogni elemento \(A \in F\), \(ch(A) \in A\).
+\end{dfn}
+
+L'\emph{assioma di scelta} afferma quanto segue: su ogni famiglia di insiemi non vuoti esiste una funzione di scelta. Tale assioma ha una serie di conseguenze - e di equivalenti modulo ZF - che sono irrinunciabili per la pratica matematica. Tra queste, alcune sono:
+\begin{enumerate}
+  \item Ogni spazio vettoriale possiede una base.
+  \item Teorema di Tychonoff, il prodotto di compatti è compatto
+  \item Ogni funzione suriettiva ha una inversa destra.
+  \item Lemma di Zorn
+  \item Per ogni coppia di insiemi \(A\), \(B\) esiste una mappa iniettiva da \(A\) in \(B\), oppure una mappa iniettiva da \(B\) in \(A\).
+  \item Ogni insieme è bene ordinabile.
+\end{enumerate}
+
+Cosa ci consente di fare l'assioma di scelta?
+
+\begin{thm}[\virg{Paradosso} di Banach-Tarski]
+  Data una sfera di raggio unitario, è possibile decomporla in un numero finito di pezzi per ricomporla in due sfere distinte, di raggio unitario. (Il numero minimo è cinque)
+\end{thm}
+
+\emph{Recupera lezione del 15 Ottobre 2015}
+
+\begin{lem}[Lemma di Zorn]
+  Sia \((A, <)\) un insieme parzialmente ordinato con le proprietà che:
+  \begin{enumerate}
+    \item \label{zorn:1}\(A\) è un insieme non vuoto;
+    \item \label{zorn:2}\(<\) è induttivo -- ossia, ogni catena in \(A\) ha un maggiorante in \(A\).
+  \end{enumerate}
+  Allora, in \(A\) esistono elementi massimali.
+\end{lem}
+
+Vediamo un'applicazione di questo lemma sugli ideali di un anello.
+
+\begin{dfn}[Ideale in anello commutativo]
+  Sia \(R\) un anello commutativo con unità -- se non fosse commutativo, dovremmo parlare di ideali destri, sinistri e bilateri. Allora, un \emph{ideale} \(I \subseteq R\) è un sottogruppo di \(R\) con la proprietà che
+  \begin{equation}
+    \forall r \in R, a \in I.\quad ra \in I. \label{ide:1}
+  \end{equation}
+\end{dfn}
+
+\begin{dfn}[Ideale proprio, massimale]
+  Un ideale è \emph{proprio} se è diverso da \(R\) stesso. Un ideale \(I\) è massimale se è proprio e, per ogni ideale proprio \(J\), se \(I \subseteq J\) allora \(I = J\).
+\end{dfn}
+
+Dimostra per esercizio che: sia \(R\) come sopra, sia \(I\) un ideale di \(R\). Allora, \(I\) è proprio se e soltanto se l'unità non appartiene ad \(I\) -- ovvero, nessun elemento invertibile di \(R\) appartiene a \(I\).
+
+\begin{thm}[dell'ideale massimale per anelli commutativi con unità]
+  Sia \(R\) un anello commutativo con unità e sia \(I\) un ideale proprio di \(R\). Allora, esiste \(J\) contenente \(I\) che è massimale.
+\end{thm}
+
+\begin{proof}
+  Ancora una volta, utilizziamo \(ZL\) (Zorn's Lemma). Sia
+  \begin{equation}
+    F = \lbrace J \colon I \subseteq J \land J\, \, \text{è un ideale proprio.} \rbrace.
+  \end{equation}
+  Verifichiamo che \((F,\subset)\) soddisfa le ipotesi di \(ZL\). L'ordine definito è banalmente parziale, per natura dell'ordine di inclusione.
+  \'E immediato vedere che \(F\) è non vuota, poiché \(I \subseteq I\) consente di dire \(I \in F\). Si consideri ora una catena \(C \subseteq F\). Dato che \(C\) è una catena, \(\cup C\) è a sua volta un ideale (dimostralo per esercizio). Inoltre, \(J \subseteq \cup C\) per ogni \(J\) incluso nella catena \(C\); tra questi, vi è anche \(I\), che è contenuto in ogni elemento della catena. Possiamo dire che \(\cup C\) è un buon candidato ad essere un maggiorante in \(A\). Rimane da verificare che \(\cup C\) è un ideale proprio. Usiamo quanto dichiarato precedentemente al teorema: poiché ogni ideale della catena è proprio, in nessuno di essi è contenuto l'unità, dunque essa non appartiene nemmeno a \(\cup C\), che risulta essere dunque un ideale proprio estendente \(I\), pertanto è un maggiorante di \(C\) in \(F\). Entrambe le ipotesi del Lemma di Zorn sono verificate, è possibile applicarlo! Per \(ZL\), esiste in \(F\) un elemento massimale chiamato \(\bar{I}\), che estende \(I\), è proprio ed è massimale rispetto all'inclusione rispetto agli ideali estendenti \(I\).
+\end{proof}
+
+\begin{prp}
+  Usando ZL: su ogni insieme \(A\) esiste una relazione di buon ordine. Ovvero, ogni insieme è ben ordinabile.
+\end{prp}
+
+Anche \(\mathbb{R}\) può essere un insieme ben ordinato, ma non ce la faremmo con nessuna estensione dell'ordine usuale. Ocio, questo era un esercizio d'esame.
+
+\begin{proof}
+  Sia \(A\) un insieme. Sia
+  \begin{equation}
+    F = \lbrace (B, <) \colon B \subseteq A \land <\, \, \text{è buon ordine su}\, \, B\rbrace.
+  \end{equation}
+  Definiamo \(\sqsubset\) su \(F\) come segue:
+  \begin{equation}
+    (B, <) \sqsubset (C, \lhd) \overset{\mathrm{def}}{\iff} B \subset C \land \lhd \, \, \text{estende} \, \, <
+  \end{equation}
+  dove con estensione si intende \(< = \lhd \cap (B \times B)\). Inoltre, per ogni \(c \in C \setminus B\) e per ogni \(b \in B\), deve valere \(b \lhd c\).
+  Dobbiamo verificare che \((F,\sqsubset)\) soddisfi le ipotesi del Lemma di Zorn. Certamente, \((\emptyset,\emptyset)\) appartiene ad \(F\). Inoltre, se \(A\) è abitato, anche \((\lbrace a \rbrace, \emptyset)\) appartiene ad \(F\) per ogni \(a \in A\). Sia \(\mathcal{C}\) una catena in \(F\). Vogliamo provare l'esistenza di un maggiorante della catena in \(F\). Consideriamo l'unione per componenti. Sia \(C = \cup \lbrace D \subseteq A \colon \exists \lhd \text{buon ordine su} D, (D, \lhd) \in F\rbrace.\) e sia \(<< = \cup \lbrace \lhd \colon \exists C \subseteq A \colon (C, \lhd) \in F\rbrace\).
+
+  Da provare: \((C, <<) \in F\). Ossia, \(C \subseteq A\), \(<<\) sia un buon ordine su \(C\), che è ordine totale per incollamento di ordini totali. Sia \(D \ne \emptyset \subseteq C\). \'E vero che \(D\) ha minimo elemento rispetto a \(<<\)? Essendo \(D\) non vuoto, esisterà un elemento in \(F\) la cui prima componente ha intersezione non nulla con \(D\). Verifica che il minimo rispetto a \(<<\) in \(D\) è lo stesso di \(D \cap E\) secondo \(\lhd\).
+  A questo punto, applichi il Lemma Di Zorn. Rimane da provare \(C = A\). Supponiamo che non lo sia e contraddire la massimalità di \((C, \lhd)\).
+\end{proof}
